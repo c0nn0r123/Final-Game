@@ -28,15 +28,15 @@ public class boss2Timer {
 			}
 			for(int i = 0; i < g.shots.size(); i++){
 				if(g.check(i)){
-				g.shotObjects.get(i).setX(g.shotObjects.get(i).getX() + 1);
-				g.shots.get(i).setLocation(g.shotObjects.get(i).getX(), g.shotObjects.get(i).getY());
-				if(g.hit(i)){
-					g.shotObjects.remove(i);
-					g.gamePanel.remove(g.shots.get(i));
-					g.shots.remove(i);
-					g.damage("Boss2");
-					i--;
-				}
+					g.shotObjects.get(i).setX(g.shotObjects.get(i).getX() + 1);
+					g.shots.get(i).setLocation(g.shotObjects.get(i).getX(), g.shotObjects.get(i).getY());
+					if(g.hitShot(g.location, i)){
+						g.shotObjects.remove(i);
+						g.gamePanel.remove(g.shots.get(i));
+						g.shots.remove(i);
+						g.damage("Boss2");
+						i--;
+					}
 				}else{
 					g.shotObjects.remove(i);
 					g.gamePanel.remove(g.shots.get(i));

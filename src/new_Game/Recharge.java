@@ -19,7 +19,7 @@ public class Recharge {
 		
 	});
 	@SuppressWarnings("serial")
-	Timer healthTimer = new Timer(4000, new AbstractAction(){
+	Timer healthTimer = new Timer(10000, new AbstractAction(){
 		public void actionPerformed(ActionEvent arg0) {
 			if(g.health < g.maxHealth){
 				g.health++;

@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.AbstractAction;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -144,6 +145,7 @@ public class Map implements WindowListener, KeyListener{
 		window.add(mainPanel);
 		window.setLocationRelativeTo(null);
 		window.setResizable(false);
+		window.setIconImage(new ImageIcon("src//pics//gamelogo.png").getImage());
 		window.setVisible(true);
 		window.addWindowListener(this);
 		window.addKeyListener(this);

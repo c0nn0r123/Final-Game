@@ -34,7 +34,7 @@ public class GUI implements KeyListener {
 	shadowBossTimer sbt = new shadowBossTimer(this);
 	int x, y, map1, map2, health, maxHealth, mana, money, maxMana, selectedItem, file;
 	Item[] items = new Item[10];
-	JFrame window = new JFrame("Epic Quest #128 Illuminati Killer Beta v4.6.0");
+	JFrame window = new JFrame("Epic Quest #128 Illuminati Killer Beta v4.6.5");
 	JPanel gamePanel = new JPanel();
 	JPanel mainPanel = new JPanel(new BorderLayout());
 	JPanel infoPanel = new JPanel();
@@ -479,7 +479,6 @@ public class GUI implements KeyListener {
 							hasbeendungeon4map[x][y] = false;
 						}
 					}
-					hasbeenovermap[0][0] = true;
 					hasbeendungeon1map[4][2] = true;
 					hasbeendungeon2map[4][2] = true;
 					hasbeendungeon3map[2][2] = true;
@@ -525,7 +524,6 @@ public class GUI implements KeyListener {
 		hero.setSize(42,52);
 		hero.setLocation(x,y);
 		gamePanel.add(hero);
-		et.timer.start();
 		for(int i = 0; i <feildObjects.size(); i++){
 			objects.add(new JLabel());
 			if(feildObjects.get(i).getName().contains("tree")){
@@ -570,6 +568,7 @@ public class GUI implements KeyListener {
 				et.hit.add("None");
 				et.hitNum.add(0);
 		}
+//		et.timer.start();
 		if(!(bossObject == null)){
 			if(dungeon1)
 				boss.setIcon(new ImageIcon("src//pics//boss 1.gif"));
@@ -745,7 +744,7 @@ public class GUI implements KeyListener {
 	
 	public void startTimers(){
 		m.timer.start();
-		et.timer.start();
+//		et.timer.start();
 		sa.time.start();
 		af.start();
 		r.manaTimer.start();
@@ -760,13 +759,6 @@ public class GUI implements KeyListener {
 			b4t.start();
 		if(hiddendungeon && map2 == 4)
 			sbt.startTimers();
-	}
-
-	public boolean hit(int i){
-		if(shotObjects.get(i).getX() <= location.getX() + location.getWidth() && shotObjects.get(i).getX() + shotObjects.get(i).getWidth() >= location.getX() &&
-		shotObjects.get(i).getY() <= location.getY() + location.getHeight() && shotObjects.get(i).getY() + shotObjects.get(i).getHeight() >= location.getY())
-			return true;
-		return false;
 	}
 
 	public boolean check(int i){

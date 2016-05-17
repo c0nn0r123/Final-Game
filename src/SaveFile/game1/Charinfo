@@ -1,18 +1,18 @@
-Test
-4
+PlaceEnemy
 2
-360
-575
-10
+0
+340
+270
+11
 12
 False
-88
+100
 100
 False
-34
+0
 TrueLv.1src//pics//sword lv.1.png
 TrueLv.1src//pics//shield lv.1.png
-TrueLv.1src//pics//Bow & Arrow lv.1.png
+FalseLv.1src//pics//no.png
 FalseLv.1src//pics//no.png
 FalseLv.1src//pics//no.png
 FalseLv.1src//pics//no.png
@@ -20,8 +20,8 @@ TrueLv.1src//pics//health potion.png
 TrueLv.1src//pics//health potion.png
 TrueLv.1src//pics//mana potion.png
 TrueLv.1src//pics//mana potion.png
-2
-d1
+0
+d3
 f
 f
 f

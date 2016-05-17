@@ -103,7 +103,7 @@ public class dungeon2Map {
 	public void Map10(int i, int j){
 		if(j == 0 || i == 0 || (j == 9 && i == 9))
 			pieces[i][j].setBackground(new Color(79, 79, 79));
-		else if(i != 9)
+		else if(i < 8)
 			pieces[i][j].setBackground(new Color(0, 126, 255));
 		else
 			pieces[i][j].setBackground(new Color(105,105,0));
@@ -111,13 +111,15 @@ public class dungeon2Map {
 	public void Map11(int i, int j){
 		if(i == 0 || i == 9)
 			pieces[i][j].setBackground(new Color(79, 79, 79));
-		else
+		else if(i != 8)
 			pieces[i][j].setBackground(new Color(0, 126, 255));
+		else
+			pieces[i][j].setBackground(new Color(105,105,0));
 	}
 	public void Map12(int i, int j){
 		if((i == 0 && j != 5) || (i == 9 && (j == 9 || j == 0)))
 			pieces[i][j].setBackground(new Color(79, 79, 79));
-		else if(( i < 9 && i > 0) && !(i == 1 && j == 5))
+		else if(( i < 8 && i > 0) && !(i == 1 && j == 5))
 			pieces[i][j].setBackground(new Color(0, 126, 255));
 		else
 			pieces[i][j].setBackground(new Color(105,105,0));
@@ -125,13 +127,15 @@ public class dungeon2Map {
 	public void Map13(int i, int j){
 		if(i == 0 || i== 9)
 			pieces[i][j].setBackground(new Color(79, 79, 79));
-		else
+		else if(i != 8)
 			pieces[i][j].setBackground(new Color(0, 126, 255));
+		else
+			pieces[i][j].setBackground(new Color(105,105,0));
 	}
 	public void Map14(int i, int j){
 		if(i == 0 || j== 9 || (i == 9 && j == 0))
 			pieces[i][j].setBackground(new Color(79, 79, 79));
-		else if(i != 9)
+		else if(i < 8)
 			pieces[i][j].setBackground(new Color(0, 126, 255));
 		else
 			pieces[i][j].setBackground(new Color(105,105,0));

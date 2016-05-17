@@ -22,19 +22,19 @@ public class Move {
 					g.gamePanel.updateUI();
 				}
 				if(fall()){
-					g.moveDown = false;
-					g.moveUp = false;
-					g.moveLeft = false;
-					g.moveRight = false;
+					if(g.moveLeft){
+						Knockback k = new Knockback(g, "right");
+					}
+					if(g.moveRight){
+						Knockback k = new Knockback(g, "left");
+					}
+					g.knock = true;
 					Knockback k = new Knockback(g, "down");
 					g.damage("Fall");
 					}else{
 						g.y--;
 						if(hitHero()){
-							g.moveDown = false;
-							g.moveUp = false;
-							g.moveLeft = false;
-							g.moveRight = false;
+							g.knock = true;
 							Knockback k = new Knockback(g, "down");
 							g.damage("Enemy");
 						}
@@ -54,19 +54,19 @@ public class Move {
 					g.gamePanel.updateUI();
 				}
 				if(fall()){
-					g.moveDown = false;
-					g.moveUp = false;
-					g.moveLeft = false;
-					g.moveRight = false;
+					if(g.moveLeft){
+						Knockback k = new Knockback(g, "right");
+					}
+					if(g.moveRight){
+						Knockback k = new Knockback(g, "left");
+					}
+					g.knock = true;
 					Knockback k = new Knockback(g, "up");
 					g.damage("Fall");
 				}else{
 					g.y++;
 					if(hitHero()){
-						g.moveDown = false;
-						g.moveUp = false;
-						g.moveLeft = false;
-						g.moveRight = false;
+						g.knock = true;
 						Knockback k = new Knockback(g, "up");
 						g.damage("Enemy");
 					}
@@ -88,20 +88,14 @@ public class Move {
 					g.gamePanel.updateUI();
 				}
 				if(fall()){
-					g.moveDown = false;
-					g.moveUp = false;
-					g.moveLeft = false;
-					g.moveRight = false;
+					g.knock = true;
 					Knockback k = new Knockback(g, "right");
 						g.damage("Fall");
 				}else{
 					g.x--;
 					g.location.setX(g.x);
 					if(hitHero()){
-						g.moveDown = false;
-						g.moveUp = false;
-						g.moveLeft = false;
-						g.moveRight = false;
+						g.knock = true;
 						Knockback k = new Knockback(g, "right");
 						g.damage("Enemy");
 					}
@@ -121,19 +115,13 @@ public class Move {
 					g.gamePanel.updateUI();
 				}
 				if(fall()){
-					g.moveDown = false;
-					g.moveUp = false;
-					g.moveLeft = false;
-					g.moveRight = false;
+					g.knock = true;
 					Knockback k = new Knockback(g, "left");
 					g.damage("Fall");
 				}else{
 					g.x++;
 					if(hitHero()){
-						g.moveDown = false;
-						g.moveUp = false;
-						g.moveLeft = false;
-						g.moveRight = false;
+						g.knock = true;
 						Knockback k = new Knockback(g, "left");
 						g.damage("Enemy");
 					}

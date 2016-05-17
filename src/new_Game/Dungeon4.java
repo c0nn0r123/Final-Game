@@ -321,6 +321,6 @@ public class Dungeon4 {
 			x = 0;
 			y+=70;
 		}
-		bossObject = new Object("boss4", 305, 305, 70, 70, 100);
+		bossObject = new Object("boss4", 305, 305, 70, 70, 80);
 	}
 }

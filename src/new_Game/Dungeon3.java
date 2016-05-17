@@ -102,7 +102,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(j == 0 || i == 0 || (j == 9 && i == 9)){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 && j == 6) || (i == 5 && j == 5)){
+				}else if(((i == 2 || i == 6) && j == 2) || ((i == 3 || i == 5) && j == 4)){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}else if(i == 1 && j == 1){
 					feildObjects.add(new Object("chest", x, y, 70, 70));
@@ -119,7 +119,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(i == 9 || i == 0){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 && j == 6) || (i == 5 && j == 5)){
+				}else if(((i == 2 || i == 7) && ( j == 3 || j == 6)) || ((i == 3 || i == 6) && (j == 4 || j == 5))){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}
 				x+=70;
@@ -147,7 +147,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(j == 9 || i == 0 || (j == 0 && i == 9)){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 && j == 6) || (i == 5 && j == 5)){
+				}else if((i == 4 && (j == 3 || j == 6)) || ((i == 3 || i == 5) && (j == 2 || j == 7))){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}else if(i == 1 && j == 8){
 					feildObjects.add(new Object("chest", x, y, 70, 70));
@@ -165,7 +165,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(j == 9 || j == 0){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 &&j == 6) || (i == 5 && j == 5)){
+				}else if(((i == 3 || i == 6) && (j == 2 || j == 7)) || ((i == 4 || i == 5) && (j == 3 || j == 6))){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}
 				x+=70;
@@ -195,7 +195,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(j == 9 || i == 0 || (i == 9 && j == 0)){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 && j == 6) || (i == 5 && j == 5)){
+				}else if(((i == 3 || i == 6) && (j == 3 || j == 5 || j == 7)) || ((i == 4 || i == 5) && (j == 4 || j == 6))){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}
 				x+=70;
@@ -210,7 +210,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(j == 9 || j == 0){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 && j == 6) || (i == 5 && j == 5)){
+				}else if(((i == 4 || i == 5) && (j == 3 || j == 6)) || ((i == 3 || i == 6) && (j == 2 || j == 7))){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}
 				x+=70;
@@ -270,7 +270,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(j == 9 || j == 0){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 && j == 6) || (i == 5 && j == 5)){
+				}else if(((i == 3 || i == 6) && (j == 1 || j == 4 || j == 5 || j == 8))){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}
 				x+=70;
@@ -301,7 +301,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(i == 9 || j == 0 || (i == 0 && j == 9)){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 && j == 6) || (i == 5 && j == 5)){
+				}else if(((i == 3 || i == 5 || i == 7) && j == 4) || ((i == 4 || i == 6) && (j == 3 || j == 5))){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}else if(i == 8 && j == 1){
 					feildObjects.add(new Object("chest", x, y, 70, 70));
@@ -318,7 +318,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(i == 9 || i == 0){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 && j == 6) || (i == 5 && j == 5)){
+				}else if(((i == 1 || i == 8) && (j == 3 || j == 6)) || ((i == 3 || i == 6) && (j == 4 || j == 5))){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}
 				x+=70;
@@ -333,7 +333,7 @@ public class Dungeon3 {
 			for(int j = 0; j < 10; j++){
 				if(i == 9 || j == 9 || (i == 0 && j == 0)){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
-				}else if((i == 5 && j == 4) || (i == 2 && j == 6) || (i == 5 && j == 5)){
+				}else if(((i == 6 || i == 3) && (j == 3 || j == 6)) || ((i == 5 || i == 4) && (j == 4 || j == 5))){
 					enemyObjects.add(new Object("enemy", x, y, 70, 70));
 				}else if(i == 8 && j == 8){
 					feildObjects.add(new Object("chest", x, y, 70, 70));
@@ -416,7 +416,7 @@ public class Dungeon3 {
 				if((i == 9 || i == 0 || j == 9 || j == 0) || ((i == 1 || i == 8) && (j == 2 || j == 7)) || ((i == 2 || i == 7) && (j < 3 || j > 6))){
 					feildObjects.add(new Object("wall", x, y, 70, 70));
 				}else if(i == 1 && j == 1){
-					bossObject = new Object("boss3", x, y, 70, 70, 80);
+					bossObject = new Object("boss3", x, y, 70, 70, 30);
 				}
 				x+=70;
 			}

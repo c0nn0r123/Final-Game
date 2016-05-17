@@ -11,49 +11,49 @@ public class SaveGame {
 			BufferedWriter Charinfo = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//Charinfo"));
 			Charinfo.write(g.player);
 			Charinfo.newLine();
-			if(g.dungeon1 || g.dungeon2){
-				Charinfo.write("4");
-				Charinfo.newLine();
-				Charinfo.write("2");
-				Charinfo.newLine();
-				Charinfo.write("360");
-				Charinfo.newLine();
-				Charinfo.write("575");
-			}else if(g.dungeon3){
-				if(g.beatboss[2]){
-					Charinfo.write("4");
-					Charinfo.newLine();
-					Charinfo.write("3");
-					Charinfo.newLine();
-					Charinfo.write("630");
-					Charinfo.newLine();
-					Charinfo.write("350");
-				}else{
-					Charinfo.write("2");
-					Charinfo.newLine();
-					Charinfo.write("2");
-					Charinfo.newLine();
-					Charinfo.write("295");
-					Charinfo.newLine();
-					Charinfo.write("220");
-				}
-			}else if(g.dungeon4){
-				Charinfo.write("0");
-				Charinfo.newLine();
-				Charinfo.write("0");
-				Charinfo.newLine();
-				Charinfo.write("85");
-				Charinfo.newLine();
-				Charinfo.write("75");
-			}else if(g.hiddendungeon){
-				Charinfo.write("2");
-				Charinfo.newLine();
-				Charinfo.write("0");
-				Charinfo.newLine();
-				Charinfo.write("80");
-				Charinfo.newLine();
-				Charinfo.write("360");
-			}else{
+//			if(g.dungeon1 || g.dungeon2){
+//				Charinfo.write("4");
+//				Charinfo.newLine();
+//				Charinfo.write("2");
+//				Charinfo.newLine();
+//				Charinfo.write("360");
+//				Charinfo.newLine();
+//				Charinfo.write("575");
+//			}else if(g.dungeon3){
+//				if(g.beatboss[2]){
+//					Charinfo.write("4");
+//					Charinfo.newLine();
+//					Charinfo.write("3");
+//					Charinfo.newLine();
+//					Charinfo.write("630");
+//					Charinfo.newLine();
+//					Charinfo.write("350");
+//				}else{
+//					Charinfo.write("2");
+//					Charinfo.newLine();
+//					Charinfo.write("2");
+//					Charinfo.newLine();
+//					Charinfo.write("295");
+//					Charinfo.newLine();
+//					Charinfo.write("220");
+//				}
+//			}else if(g.dungeon4){
+//				Charinfo.write("0");
+//				Charinfo.newLine();
+//				Charinfo.write("0");
+//				Charinfo.newLine();
+//				Charinfo.write("85");
+//				Charinfo.newLine();
+//				Charinfo.write("75");
+//			}else if(g.hiddendungeon){
+//				Charinfo.write("2");
+//				Charinfo.newLine();
+//				Charinfo.write("0");
+//				Charinfo.newLine();
+//				Charinfo.write("80");
+//				Charinfo.newLine();
+//				Charinfo.write("360");
+//			}else{
 				Charinfo.write(Integer.toString(g.map1));
 				Charinfo.newLine();
 				Charinfo.write(Integer.toString(g.map2));
@@ -61,7 +61,7 @@ public class SaveGame {
 				Charinfo.write(Integer.toString(g.x));
 				Charinfo.newLine();
 				Charinfo.write(Integer.toString(g.y));
-			}
+//			}
 			Charinfo.newLine();
 			Charinfo.write(Integer.toString(g.health));
 			Charinfo.newLine();

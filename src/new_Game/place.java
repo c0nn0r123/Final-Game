@@ -187,7 +187,7 @@ public class place {
 			|| i == 7)) || ((i == 3 || i == 6) && (u > 0 && u < 8)) || ((i == 2) && (u > 0 && u < 6)) ||
 			((i == 1) && ((u > 0 && u < 5) || (u > 6 && u < 10))) || ((i > 6) && (u > 0 && u < 5))){
 				feildObjects.add(new Object("tree", x, y, 70, 70));
-			}else if(i == 4 && u == 6){
+			}else if((i == 4 && u == 6) || (i == 2 && u == 6)){
 				enemyObjects.add(new Object("enemy", x, y, 70, 70, 1));
 			}else if(i == 1 && u == 5){
 				feildObjects.add(new Object("chest", x, y, 70 ,70));

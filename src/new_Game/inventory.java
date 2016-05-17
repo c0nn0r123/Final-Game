@@ -216,7 +216,7 @@ public class inventory implements WindowListener, KeyListener{
 						break;
 					default:
 						boolean onwater = false;
-						if(g.selectedItem == 3){
+						if(g.selectedItem == 3 && selectedItem != 3){
 							for(int x = 0; x < g.feildObjects.size(); x++){
 								if(g.feildObjects.get(x).getName().equals("water") || g.feildObjects.get(x).getName().equals("hole") ){
 									if(g.location.getX() < g.feildObjects.get(x).getX() + g.feildObjects.get(x).getWidth() && g.location.getX() + g.location.getWidth() > g.feildObjects.get(x).getX()
@@ -227,12 +227,9 @@ public class inventory implements WindowListener, KeyListener{
 								}
 							}
 						}
-						if(onwater){
+						if(onwater)
 							JOptionPane.showMessageDialog(null, "You are using the shoes and cannot remove them.");
-							g.window.setVisible(true);
-							g.startTimers();
-							window.dispose();
-						}else{
+						else{
 							g.selectedItem = selectedItem;
 							g.window.setVisible(true);
 							g.startTimers();

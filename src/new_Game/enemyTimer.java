@@ -25,6 +25,7 @@ public class enemyTimer {
 					if(move.get(i) == 0 && UP(i)){
 						g.enemyObjects.get(i).setY(g.enemyObjects.get(i).getY()-1);
 						if(hitHero(i) && g.enemyObjects.get(i).getY() + 1 == g.location.getY() + g.location.getHeight() - 10){
+							g.knock = true;
 							Knockback k = new Knockback(g, "up");
 							g.damage("Enemy");
 						}
@@ -32,6 +33,7 @@ public class enemyTimer {
 					}else if(move.get(i) == 1 && DOWN(i)){
 						g.enemyObjects.get(i).setY(g.enemyObjects.get(i).getY()+1);
 						if(hitHero(i) && g.enemyObjects.get(i).getY() + g.enemyObjects.get(i).getHeight() - 1 == g.location.getY() + 10){
+							g.knock = true;
 							Knockback k = new Knockback(g, "down");
 							g.damage("Enemy");
 						}
@@ -39,6 +41,7 @@ public class enemyTimer {
 					}else if(move.get(i) == 2 && LEFT(i)){
 						g.enemyObjects.get(i).setX(g.enemyObjects.get(i).getX()-1);
 						if(hitHero(i) && g.enemyObjects.get(i).getX() + 1 == g.location.getX() + g.location.getWidth() - 10){
+							g.knock = true;
 							Knockback k = new Knockback(g, "left");
 							g.damage("Enemy");
 						}
@@ -46,6 +49,7 @@ public class enemyTimer {
 					}else if(move.get(i) == 3 && RIGHT(i)){
 						g.enemyObjects.get(i).setX(g.enemyObjects.get(i).getX()+1);
 						if(hitHero(i) && g.enemyObjects.get(i).getX() + g.enemyObjects.get(i).getWidth() - 1 == g.location.getX() + 10){
+							g.knock = true;
 							Knockback k = new Knockback(g, "right");
 							g.damage("Enemy");
 						}
@@ -58,6 +62,7 @@ public class enemyTimer {
 						if(UP(i)){
 							g.enemyObjects.get(i).setY(g.enemyObjects.get(i).getY()-1);
 							if(hitHero(i) && g.enemyObjects.get(i).getY() + 1 == g.location.getY() + g.location.getHeight() - 10){
+								g.knock = true;
 								Knockback k = new Knockback(g, "up");
 								g.damage("Enemy");
 							}
@@ -71,6 +76,7 @@ public class enemyTimer {
 						if(DOWN(i)){
 							g.enemyObjects.get(i).setY(g.enemyObjects.get(i).getY()+1);
 							if(hitHero(i) && g.enemyObjects.get(i).getY() + g.enemyObjects.get(i).getHeight() - 1 == g.location.getY() + 10){
+								g.knock = true;
 								Knockback k = new Knockback(g, "down");
 								g.damage("Enemy");
 							}
@@ -84,6 +90,7 @@ public class enemyTimer {
 						if(LEFT(i)){
 							g.enemyObjects.get(i).setX(g.enemyObjects.get(i).getX()-1);
 							if(hitHero(i) && g.enemyObjects.get(i).getX() + 1 == g.location.getX() + g.location.getWidth() - 10){
+								g.knock = true;
 								Knockback k = new Knockback(g, "left");
 								g.damage("Enemy");
 							}
@@ -97,6 +104,7 @@ public class enemyTimer {
 						if(RIGHT(i)){
 							g.enemyObjects.get(i).setX(g.enemyObjects.get(i).getX()+1);
 							if(hitHero(i) && g.enemyObjects.get(i).getX() + g.enemyObjects.get(i).getWidth() - 1 == g.location.getX() + 10){
+								g.knock = true;
 								Knockback k = new Knockback(g, "right");
 								g.damage("Enemy");
 							}
@@ -120,7 +128,7 @@ public class enemyTimer {
 
 	public enemyTimer(GUI g){
 		this.g = g;
-		timer.start();
+//		timer.start();
 	}
 	
 	public boolean hitHero(int i){
@@ -129,25 +137,6 @@ public class enemyTimer {
 				return true;
 		return false;
 	}
-	
-//	public boolean CanMove(Object enemy, int q){
-//		for(int i = 0; i < g.feildObjects.size(); i++){
-//			if(enemy.getX() + enemy.getWidth() >= g.feildObjects.get(i).getX() && enemy.getX() <= g.feildObjects.get(i).getX() + g.feildObjects.get(i).getWidth() &&
-//			enemy.getY() + enemy.getHeight() >= g.feildObjects.get(i).getY() && enemy.getY() <= g.feildObjects.get(i).getY() + g.feildObjects.get(i).getHeight())
-//					return false;
-//		}
-//		for(int i = 0; i < g.enemyObjects.size(); i++){
-//			if(!(q == i)){
-//				if(enemy.getX() + enemy.getWidth() >= g.enemyObjects.get(i).getX() && enemy.getX() <= g.enemyObjects.get(i).getX() + g.enemyObjects.get(i).getWidth() &&
-//				enemy.getY() + enemy.getHeight() >= g.enemyObjects.get(i).getY() && enemy.getY() <= g.enemyObjects.get(i).getY() + g.enemyObjects.get(i).getHeight())
-//						return false;
-//			}
-//		}
-//		if(enemy.getY() == 0 || enemy.getX() == 0 || enemy.getY() + enemy.getHeight() == 700 || enemy.getX() + enemy.getWidth() == 700)
-//			return false;
-//		
-//		return true;
-//	}
 	
 	public boolean UP(int q){
 		for(int i = 0; i < g.feildObjects.size(); i++){

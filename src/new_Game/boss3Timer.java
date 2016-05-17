@@ -97,7 +97,7 @@ public class boss3Timer {
 				}
 				g.shots.get(i).setLocation(g.shotObjects.get(i).getX(), g.shotObjects.get(i).getY());
 				int bull = hitBullet(i);
-				if(g.hit(i)){
+				if(g.hitShot(g.location, i)){
 					g.shotObjects.remove(i);
 					g.gamePanel.remove(g.shots.get(i));
 					g.shots.remove(i);
