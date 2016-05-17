@@ -20,9 +20,10 @@ public class openSave implements MouseListener{
 	JLabel copy = new JLabel("<html><font color='white'>COPY</html>");
 	JLabel delete = new JLabel("<html><font color='white'>DELETE</html>");
 	JLabel exit = new JLabel("<html><font color='white'>EXIT</html>");
+	JLabel checkX = new JLabel("<html><font color='white'>CONTROLLER</html>");
 	String[] files =  new String[3];
 	JPanel[] games = new JPanel[3];
-	JPanel[] options = new JPanel[3];
+	JPanel[] options = new JPanel[4];
 	JLabel savedGames = new JLabel("<html><font color='white'><b><u>Saved Games</u></b></html>");
 	JLabel option = new JLabel("<html><font color='white'><b><u>Options</u></b></html>");
 	JLabel background = new JLabel(new ImageIcon("src//pics//mainmenu.png"));
@@ -85,6 +86,14 @@ public class openSave implements MouseListener{
 		options[2].add(exit);
 		options[2].setOpaque(false);
 		mainPanel.add(options[2]);	
+		options[3] = new JPanel();
+		options[3].addMouseListener(this);
+		checkX.setFont(new Font(checkX.getFont().getName(), Font.PLAIN, 18));
+		options[3].setSize(130, 30);
+		options[3].setLocation(535, 650);
+		options[3].add(checkX);
+		options[3].setOpaque(false);
+		mainPanel.add(options[3]);	
 		mainPanel.add(background);
 		window.add(mainPanel);
 		window.setSize(706, 735);
@@ -103,13 +112,15 @@ public class openSave implements MouseListener{
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		for(int i = 0; i < 3; i++){
-			if(e.getSource() == options[i]){
-				options[i].setBorder(BorderFactory.createLineBorder(Color.gray));
-				options[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
-			}
 			if(e.getSource() == games[i]){
 				games[i].setBorder(BorderFactory.createLineBorder(Color.gray));
 				games[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+		}
+		for(int i = 0; i < 4; i ++){
+			if(e.getSource() == options[i]){
+				options[i].setBorder(BorderFactory.createLineBorder(Color.gray));
+				options[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 		}
 		
@@ -117,10 +128,12 @@ public class openSave implements MouseListener{
 	@Override
 	public void mouseExited(MouseEvent e) {
 		for(int i = 0; i < 3; i++){
-			if(e.getSource() == options[i])
-				options[i].setBorder(null);
 			if(e.getSource() == games[i])
 				games[i].setBorder(null);
+		}
+		for(int i = 0; i < 4; i++){
+			if(e.getSource() == options[i])
+				options[i].setBorder(null);
 		}
 		
 	}
