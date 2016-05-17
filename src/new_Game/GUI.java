@@ -648,56 +648,63 @@ public class GUI implements KeyListener {
 	
 	@SuppressWarnings("unused")
 	public void damage(String how){
+		int hurt = 0;
 		if(selectedItem != 1 && !how.equals("arrow")){
 			if(player.contains("Legend "))
-				health-= 4;
+				hurt += 4;
 			else if(player.contains("Hero "))
-				health-= 2;
+				hurt += 2;
 			else
-				health--;
+				hurt += 1;
 		}
 		switch(how){
 			case "arrow":
-				health--;
+				hurt += 1;
 				break;
 			case "shadow":
 			case "Enemy":
 			case "Fall":
 				if(player.contains("Legend "))
-					health-= 4;
+					hurt += 4;
 				else if(player.contains("Hero "))
-					health-= 2;
+					hurt += 2;
 				break;
 			case "Bomb":
 			case "Boss4Shot":
 				if(player.contains("Legend "))
-					health-=12;
+					hurt += 12;
 				else if(player.contains("Hero "))
-					health-=6;
+					hurt += 6;
 				else
-					health-=3;
+					hurt += 3;
 				break;
 			case "Boss1":
 			case "Boss3":
 			case "Boss4Move":
 				if(player.contains("Legend "))
-					health-=8;
+					hurt += 8;
 				else if(player.contains("Hero "))
-					health-=4;
+					hurt += 4;
 				else
-					health-=2;
+					hurt += 2;
 				break;
 			case "Boss2":
 				if(player.contains("Legend "))
-					health-=16;
+					hurt += 16;
 				else if(player.contains("Hero "))
-					health-=8;
+					hurt += 8;
 				else
-					health-=4;
+					hurt += 4;
 				break;
 			default:
 				break;
 		}
+		if(selectedItem == 1 && items[1].getLevel() == 2){
+			System.out.println(hurt);
+			hurt = hurt / 2;
+			System.out.println(hurt);
+		}
+		health -= hurt;
 		if(health < 0)
 			health = 0;
 		playerHealth.setText(player + "'s  Health: " + health);
