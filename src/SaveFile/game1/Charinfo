@@ -1,15 +1,15 @@
-PlaceEnemy
-2
-3
-7
-294
+empty
+0
+0
+70
+70
 12
 12
 False
 100
 100
 False
-19
+0
 TrueLv.1src//pics//sword lv.1.png
 TrueLv.1src//pics//shield lv.1.png
 FalseLv.1src//pics//no.png
@@ -21,7 +21,7 @@ TrueLv.1src//pics//health potion.png
 TrueLv.1src//pics//mana potion.png
 TrueLv.1src//pics//mana potion.png
 0
-hd
+f
 f
 f
 f
