@@ -19,53 +19,6 @@ public class ArrowFire {
 			g.gamePanel.remove(explode);
 			BOOM(boom);
 			explosion.stop();
-			
-			//			expand++;
-//			switch(expand){
-//			case 1:
-//				//69, 74
-//				if(boom != null)
-//					BOOM(boom);
-//				break;
-//			case 5:
-//				//119, 122
-//				if(boom.getName().equals("updown"))
-//					boom = new Object("updown", boom.getX() - 25, boom.getY()-24, 119, 122);
-//				else
-//					boom = new Object("leftright", boom.getX() - 24, boom.getY()-25, 122, 119);					
-//				if(boom != null)
-//					BOOM(boom);
-//				break;
-//			case 9:
-//				//167, 170
-//				if(boom.getName().equals("updown"))
-//					boom = new Object("updown", boom.getX() - 24, boom.getY()-24, 167, 170);
-//				else
-//					boom = new Object("leftright", boom.getX() - 24, boom.getY()-24, 170, 167);
-//				if(boom != null)
-//					BOOM(boom);
-//				break;
-//			case 13:
-//				//209, 210
-//				if(boom.getName().equals("updown"))
-//					boom = new Object("updown", boom.getX() - 21, boom.getY()-20, 209, 210);
-//				if(boom != null)
-//					BOOM(boom);
-//				break;
-////			case 16:
-////				if(boom != null)
-////					BOOM(boom);
-////				break;
-//			case 17:
-//				g.gamePanel.remove(explode);
-//				g.gamePanel.updateUI();
-//				boom = null;
-//				g.boomHero = false;
-//				for(int i = 0; i < g.boomEnemys.size(); i ++)
-//					g.boomEnemys.set(i, false);
-//				explosion.stop();
-//				break;
-//			}
 		}
 		
 	});

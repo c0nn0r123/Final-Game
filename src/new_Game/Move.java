@@ -9,11 +9,12 @@ import javax.swing.JOptionPane;
 public class Move {
 	GUI g;
 	int enemy;
+	boolean damage = false;
 	@SuppressWarnings("serial")
 	Timer timer = new Timer(6, new AbstractAction(){
 	@SuppressWarnings("unused")
 	public void actionPerformed(ActionEvent e) {
-		if(!(g.sa.swing) || !(g.knock)){
+		if(!(g.knock)){
 			if(UP()&&  g.moveUp){
 				if(g.heroMove.equals("")){
 					g.heroMove = "up";
@@ -22,21 +23,21 @@ public class Move {
 					g.gamePanel.updateUI();
 				}
 				if(fall()){
-					if(g.moveLeft){
-						Knockback k = new Knockback(g, "right");
-					}
-					if(g.moveRight){
-						Knockback k = new Knockback(g, "left");
-					}
 					g.knock = true;
 					Knockback k = new Knockback(g, "down");
-					g.damage("Fall");
+					if(!damage){
+						damage = true;
+						g.damage("Fall");
+					}
 					}else{
 						g.y--;
 						if(hitHero()){
 							g.knock = true;
 							Knockback k = new Knockback(g, "down");
-							g.damage("Enemy");
+							if(!damage){
+								damage = true;
+								g.damage("Enemy");
+							}
 						}
 						if(g.y <= -40){
 							g.map1--;
@@ -54,21 +55,21 @@ public class Move {
 					g.gamePanel.updateUI();
 				}
 				if(fall()){
-					if(g.moveLeft){
-						Knockback k = new Knockback(g, "right");
-					}
-					if(g.moveRight){
-						Knockback k = new Knockback(g, "left");
-					}
 					g.knock = true;
 					Knockback k = new Knockback(g, "up");
-					g.damage("Fall");
+					if(!damage){
+						damage = true;
+						g.damage("Fall");
+					}
 				}else{
 					g.y++;
 					if(hitHero()){
 						g.knock = true;
 						Knockback k = new Knockback(g, "up");
-						g.damage("Enemy");
+						if(!damage){
+							damage = true;
+							g.damage("Enemy");
+						}
 					}
 					if(g.y >= 688){
 						g.map1++;
@@ -90,14 +91,20 @@ public class Move {
 				if(fall()){
 					g.knock = true;
 					Knockback k = new Knockback(g, "right");
+					if(!damage){
+						damage = true;
 						g.damage("Fall");
+					}
 				}else{
 					g.x--;
 					g.location.setX(g.x);
 					if(hitHero()){
 						g.knock = true;
 						Knockback k = new Knockback(g, "right");
-						g.damage("Enemy");
+						if(!damage){
+							damage = true;
+							g.damage("Enemy");
+						}
 					}
 					if(g.x <= -40){
 						g.map2--;
@@ -117,13 +124,19 @@ public class Move {
 				if(fall()){
 					g.knock = true;
 					Knockback k = new Knockback(g, "left");
-					g.damage("Fall");
+					if(!damage){
+						damage = true;
+						g.damage("Fall");
+					}
 				}else{
 					g.x++;
 					if(hitHero()){
 						g.knock = true;
 						Knockback k = new Knockback(g, "left");
-						g.damage("Enemy");
+						if(!damage){
+							damage = true;
+							g.damage("Enemy");
+						}
 					}
 					if(g.x >= 688){
 						g.map2++;
@@ -138,6 +151,7 @@ public class Move {
 		    g.location.setY(g.y);
 			g.hero.setLocation(g.x,g.y);
 			g.gamePanel.updateUI();
+			damage = false;
 		}
 	}
 });

@@ -568,7 +568,7 @@ public class GUI implements KeyListener {
 				et.hit.add("None");
 				et.hitNum.add(0);
 		}
-//		et.timer.start();
+		et.timer.start();
 		if(!(bossObject == null)){
 			if(dungeon1)
 				boss.setIcon(new ImageIcon("src//pics//boss 1.gif"));
@@ -744,7 +744,7 @@ public class GUI implements KeyListener {
 	
 	public void startTimers(){
 		m.timer.start();
-//		et.timer.start();
+		et.timer.start();
 		sa.time.start();
 		af.start();
 		r.manaTimer.start();

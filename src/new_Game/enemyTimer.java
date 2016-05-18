@@ -128,7 +128,7 @@ public class enemyTimer {
 
 	public enemyTimer(GUI g){
 		this.g = g;
-//		timer.start();
+		timer.start();
 	}
 	
 	public boolean hitHero(int i){

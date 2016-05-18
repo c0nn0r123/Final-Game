@@ -74,7 +74,8 @@ public class swordAttack {
 								g.playerMoney.setText(g.player + "'s  Money: " + g.money);
 								g.infoPanel.updateUI();
 							}
-							break;
+//							talk to matt about this 
+//							break;
 						}
 					}
 					if((g.dungeon1 || g.dungeon2 || g.dungeon3 || g.dungeon4 || g.hiddendungeon) && g.bossObject != null){
@@ -166,10 +167,11 @@ public class swordAttack {
 						info = 4;
 					if(info < 4){
 						int chest = 0;
-						for(int x = 0; x < GUI.chestInfo[info].size(); x++){
+						for(int x = 0; x <= GUI.chestInfo[info].size(); x++){
 							chest = x;
-							if(GUI.chestInfo[info].get(x).getMap1() == g.map1 && GUI.chestInfo[info].get(x).getMap2() == g.map2)
-								break;
+							if(x < GUI.chestInfo[info].size())
+								if(GUI.chestInfo[info].get(x).getMap1() == g.map1 && GUI.chestInfo[info].get(x).getMap2() == g.map2)
+									break;
 						}
 						if(chest < GUI.chestInfo[info].size()){
 							if(!(GUI.chestInfo[info].get(chest).getOpened())){
