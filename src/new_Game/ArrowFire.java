@@ -12,6 +12,7 @@ public class ArrowFire {
 	int count = 0, expand = 0;
 	JPanel explode = new JPanel();
 	Object boom;
+	boolean hitEnemy = false, hitHero = false, hitShot = false;
 	//If i still want an animation for the explosion will need to work on this code!!
 	@SuppressWarnings("serial")
 	Timer explosion = new Timer(20, new AbstractAction(){
@@ -64,45 +65,39 @@ public class ArrowFire {
 						g.arrows.remove(i);
 						g.arrowObjects.remove(i);
 						i--;
-						if(i < 0)
-							i = 0;
 					}
 				}else{		
-					if(g.arrowObjects.size() > 0){
-						for(int j = 0; j < g.enemyObjects.size(); j++){
-							if(g.HIT(g.arrowObjects.get(i), j)){
-								g.arrowObjects.get(i).setHealth(g.arrowObjects.get(i).getHealth()-1);
-								g.enemyObjects.get(j).setHealth(g.enemyObjects.get(j).getHealth()-1);
-								if(g.enemyObjects.get(j).getHealth() <= 0){
-									g.gamePanel.remove(g.enemy.get(j));
-									g.enemy.remove(j);
-									g.enemyObjects.remove(j);
-									if(g.et.move.size() != 0)
-										g.et.move.remove(j);
-									Random gen = new Random();
-									g.money+=gen.nextInt(4);
-									if(g.money > 999)
-										g.money = 999;
-									g.playerMoney.setText(g.player + "'s  Money: " + g.money);
-									g.infoPanel.updateUI();
-								}
-								//Call BOOM to kill enemies around the center of the blast here
-								if(g.arrowObjects.get(i).getName().contains("bomb")){
-									bomb(i);
-								}
-								if(g.arrowObjects.get(i).getHealth() <=0){
-									g.gamePanel.remove(g.arrows.get(i));
-									g.arrows.remove(i);
-									g.arrowObjects.remove(i);
-									i--;
-									if(i < 0)
-										i = 0;
-								}
-								break;
+					for(int j = 0; j < g.enemyObjects.size(); j++){
+						if(g.HIT(g.arrowObjects.get(i), j)){
+							g.arrowObjects.get(i).setHealth(g.arrowObjects.get(i).getHealth()-1);
+							g.enemyObjects.get(j).setHealth(g.enemyObjects.get(j).getHealth()-1);
+							if(g.enemyObjects.get(j).getHealth() <= 0){
+								g.gamePanel.remove(g.enemy.get(j));
+								g.enemy.remove(j);
+								g.enemyObjects.remove(j);
+								if(g.et.move.size() != 0)
+									g.et.move.remove(j);
+								Random gen = new Random();
+								g.money+=gen.nextInt(4);
+								if(g.money > 999)
+									g.money = 999;
+								g.playerMoney.setText(g.player + "'s  Money: " + g.money);
+								g.infoPanel.updateUI();
 							}
+							//Call BOOM to kill enemies around the center of the blast here
+							if(g.arrowObjects.get(i).getName().contains("bomb"))
+								bomb(i);
+							if(g.arrowObjects.get(i).getHealth() <=0){
+								g.gamePanel.remove(g.arrows.get(i));
+								g.arrows.remove(i);
+								g.arrowObjects.remove(i);
+								i--;
+							}
+							hitEnemy = true;
+							break;
 						}
 					}
-					if(g.arrowObjects.size() > 0){
+					if(!hitEnemy){
 						if(g.arrowObjects.get(i).getX() <= g.location.getX() + g.location.getWidth() && g.arrowObjects.get(i).getX() + g.arrowObjects.get(i).getWidth() >= g.location.getX() &&
 						g.arrowObjects.get(i).getY() <= g.location.getY() + g.location.getHeight() && g.arrowObjects.get(i).getY() + g.arrowObjects.get(i).getHeight() >= g.location.getY()){
 							g.arrowObjects.get(i).setHealth(g.arrowObjects.get(i).getHealth()-1);
@@ -115,57 +110,56 @@ public class ArrowFire {
 								g.arrows.remove(i);
 								g.arrowObjects.remove(i);
 								i--;
-								if(i < 0)
-									i = 0;
 							}
+							hitHero = true;
 						}
-					}
-					if((g.dungeon1 || g.dungeon2 || g.dungeon3 || g.dungeon4 || g.hiddendungeon) && g.bossObject != null){
-						if(!(g.dungeon4)){
-							if(g.arrowObjects.size() > 0){
+						if(!hitHero){
+							if(!(g.bossObject != null && g.dungeon4)){
 								for(int s = 0; s < g.shotObjects.size(); s++){
 									if(g.hitShot(g.arrowObjects.get(i), s)){
 										g.arrowObjects.get(i).setHealth(g.arrowObjects.get(i).getHealth()-1);
 										g.shotObjects.get(s).setHealth(g.shotObjects.get(s).getHealth()-1);
-											if(g.shotObjects.get(s).getHealth() <= 0){
-												g.gamePanel.remove(g.shots.get(s));
-												g.shots.remove(s);
-												g.shotObjects.remove(s);
-											}
-											if(g.arrowObjects.get(i).getName().contains("bomb")){
-												bomb(i);
-											}
-											if(g.arrowObjects.get(i).getHealth() <= 0){
-												g.gamePanel.remove(g.arrows.get(i));
-												g.arrows.remove(i);
-												g.arrowObjects.remove(i);
-												i--;
-												if(i < 0)
-													i = 0;
-											}
+										if(g.shotObjects.get(s).getHealth() <= 0){
+											g.gamePanel.remove(g.shots.get(s));
+											g.shots.remove(s);
+											g.shotObjects.remove(s);
+										}
+										if(g.arrowObjects.get(i).getName().contains("bomb"))
+											bomb(i);
+										if(g.arrowObjects.get(i).getHealth() <= 0){
+											g.gamePanel.remove(g.arrows.get(i));
+											g.arrows.remove(i);
+											g.arrowObjects.remove(i);
+											i--;
+										}
+										hitShot = true;
 										break;
 									}
 								}
 							}
-						}
-						if(g.arrowObjects.size() > 0){
-							if(g.bossObject != null){
-								if(g.hitBoss(g.arrowObjects.get(i))){
-									g.arrowObjects.get(i).setHealth(g.arrowObjects.get(i).getHealth()-1);
-									if(g.arrowObjects.get(i).getName().contains("bomb")){
-										bomb(i);
-									}else
+							if(!hitShot){
+								if(g.bossObject != null){
+									if(g.hitBoss(g.arrowObjects.get(i))){
+										g.arrowObjects.get(i).setHealth(g.arrowObjects.get(i).getHealth()-1);
+										if(g.arrowObjects.get(i).getName().contains("bomb"))
+											bomb(i);
+										else
 											g.bossObject.setHealth(g.bossObject.getHealth()-1);
-									if(g.arrowObjects.get(i).getHealth() <= 0){
-										g.gamePanel.remove(g.arrows.get(i));
-										g.arrows.remove(i);
-										g.arrowObjects.remove(i);
+										if(g.arrowObjects.get(i).getHealth() <= 0){
+											g.gamePanel.remove(g.arrows.get(i));
+											g.arrows.remove(i);
+											g.arrowObjects.remove(i);
+											i--;
+										}
+										g.KillBoss();
 									}
-									g.KillBoss();
 								}
 							}
 						}
 					}
+					hitEnemy = false;
+					hitHero = false;
+					hitShot = false;
 				}
 				g.gamePanel.updateUI();
 			}

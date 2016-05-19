@@ -13,6 +13,70 @@ public class enemyTimer {
 	ArrayList<String> hit = new ArrayList<String>();
 	ArrayList<Integer> hitNum = new ArrayList<Integer>();
 	int numMove = 0;
+	boolean hitArrow = false;
+	@SuppressWarnings("serial")
+	Timer shooterTimer = new Timer(1, new AbstractAction(){
+		public void actionPerformed(ActionEvent e) {
+			for(int i = 0; i < g.shotObjects.size(); i++){
+				switch(g.shotObjects.get(i).getName()){
+				case "up":
+					g.shotObjects.get(i).setY(g.shotObjects.get(i).getY()-1);
+					break;
+				case "down":
+					g.shotObjects.get(i).setY(g.shotObjects.get(i).getY()+1);
+					break;
+				case "left":
+					g.shotObjects.get(i).setX(g.shotObjects.get(i).getX()-1);
+					break;
+				case "right":
+					g.shotObjects.get(i).setX(g.shotObjects.get(i).getX()+1);
+					break;
+				}
+				g.shots.get(i).setLocation(g.shotObjects.get(i).getX(), g.shotObjects.get(i).getY());
+				if(g.hitShot(g.location, i)){
+					g.damage("Basic");
+					g.gamePanel.remove(g.shots.get(i));
+					g.shotObjects.remove(i);
+					g.shots.remove(i);
+					i--;
+				}else{
+					for(int x = 0; x < g.arrowObjects.size(); x++){
+						if(g.hitShot(g.arrowObjects.get(x), i)){
+							hitArrow = true;
+							g.arrowObjects.get(x).setHealth(g.arrowObjects.get(x).getHealth()-1);
+							if(g.arrowObjects.get(x).getHealth() <= 0){
+								g.gamePanel.remove(g.arrows.get(x));
+								g.arrowObjects.remove(x);
+								g.arrows.remove(x);
+							}
+							g.gamePanel.remove(g.shots.get(i));
+							g.shots.remove(i);
+							g.shotObjects.remove(i);
+							i--;
+							break;
+						}
+					}
+					if(!hitArrow){
+						for(int x = 0; x < g.feildObjects.size(); x++){
+							if(!(g.feildObjects.get(x).getName().equals("water") || g.feildObjects.get(x).getName().equals("hole"))){
+								if(g.hitShot(g.feildObjects.get(x), i)){
+									g.gamePanel.remove(g.shots.get(i));
+									g.shots.remove(i);
+									g.shotObjects.remove(i);
+									i--;
+									break;
+								}
+							}
+						}
+					}
+					hitArrow = false;
+					g.gamePanel.updateUI();
+				}
+			}
+			
+		}
+		
+	});
 	@SuppressWarnings("serial")
 	Timer timer = new Timer(30, new AbstractAction(){
 		@SuppressWarnings("unused")

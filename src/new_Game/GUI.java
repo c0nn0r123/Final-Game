@@ -6,10 +6,7 @@ import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-
 import javax.swing.*;
-
-import new_Game.Object;
 //16 47 are dementions of the border
 public class GUI implements KeyListener {
 	String type = "hero";
