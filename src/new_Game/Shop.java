@@ -21,70 +21,70 @@ public class Shop implements WindowListener, KeyListener{
 	public Shop(GUI g){
 		this.g = g;
 		itemNames[0] = new JLabel("<html><div style='text-align: center;'>Health Potion<br>50 money</br></html>");
-		itemPics[0] = new JLabel(new ImageIcon("src//pics//health potion.png"));
+		itemPics[0] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/health potion.png")));
 		itemNames[1] = new JLabel("<html><div style='text-align: center;'>Mana Potion<br>50 money</br></html>");
-		itemPics[1] = new JLabel(new ImageIcon("src//pics//mana potion.png"));
+		itemPics[1] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/mana potion.png")));
 		if(!g.healthTaco){
 			itemNames[2] = new JLabel("<html><div style='text-align: center;'>Taco of Health<br>300 money</br></html>");
-			itemPics[2] = new JLabel(new ImageIcon("src//pics//taco.png"));
+			itemPics[2] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/taco.png")));
 		}else{
 			itemNames[2] = new JLabel("<html><div style='text-align: center;'>Out of Stock</html>");
-			itemPics[2] = new JLabel(new ImageIcon("src//pics//no.png"));
+			itemPics[2] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 		}
 		if(!g.manaBull){
 			itemNames[3] = new JLabel("<html><div style='text-align: center;'>Mana-Bull<br>300 money</br></html>");
-			itemPics[3] = new JLabel(new ImageIcon("src//pics//mana-bull.png"));
+			itemPics[3] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/mana-bull.png")));
 		}else{
 			itemNames[3] = new JLabel("<html><div style='text-align: center;'>Out of Stock</html>");
-			itemPics[3] = new JLabel(new ImageIcon("src//pics//no.png"));
+			itemPics[3] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 		}
 		if(g.map1 == 2 && g.map2 == 9){
 			itemNames[4] = new JLabel("<html><div style='text-align: center;'>Glasses<br>100 money</br></html>");
-			itemPics[4] = new JLabel(new ImageIcon("src//pics//glasses.png"));
+			itemPics[4] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/glasses.png")));
 		}else{
 			itemNames[4] = new JLabel("<html><div style='text-align: center;'>Out of Stock</html>");
-			itemPics[4] = new JLabel(new ImageIcon("src//pics//no.png"));
+			itemPics[4] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 		}
 		if(g.map1 == 9 && g.map2 == 3){
 			if(g.items[0].getLevel() == 1){
 				itemNames[5] = new JLabel("<html><div style='text-align: center;'>Sword Upgrade<br>500 money</br></html>");
-				itemPics[5] = new JLabel(new ImageIcon("src//pics//sword lv.2.png"));
+				itemPics[5] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/sword lv.2.png")));
 			}else{
 				itemNames[5] = new JLabel("<html><div style='text-align: center;'>Out of Stock</html>");
-				itemPics[5] = new JLabel(new ImageIcon("src//pics//no.png"));
+				itemPics[5] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 			}
 			if(g.items[1].getLevel() == 1){
 				itemNames[6] = new JLabel("<html><div style='text-align: center;'>Shield Upgrade<br>500 money</br></html>");
-				itemPics[6] = new JLabel(new ImageIcon("src//pics//shield lv.2.png"));
+				itemPics[6] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/shield lv.2.png")));
 			}else{
 				itemNames[6] = new JLabel("<html><div style='text-align: center;'>Out of Stock</html>");
-				itemPics[6] = new JLabel(new ImageIcon("src//pics//no.png"));
+				itemPics[6] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 			}
 			if(g.items[2].getLevel() == 1){
 				itemNames[7] = new JLabel("<html><div style='text-align: center;'>Bow Upgrade<br>500 money</br></html>");
-				itemPics[7] = new JLabel(new ImageIcon("src//pics//Bow & Arrow lv.2.png"));
+				itemPics[7] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/Bow & Arrow lv.2.png")));
 			}else{
 				itemNames[7] = new JLabel("<html><div style='text-align: center;'>Out of Stock</html>");
-				itemPics[7] = new JLabel(new ImageIcon("src//pics//no.png"));
+				itemPics[7] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 			}
 			if(g.items[3].getLevel() == 1){
 				itemNames[8] = new JLabel("<html><div style='text-align: center;'>Shoe Upgrade<br>500 money</br></html>");
-				itemPics[8] = new JLabel(new ImageIcon("src//pics//water shoes lv.2.png"));
+				itemPics[8] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/water shoes lv.2.png")));
 			}else{
 				itemNames[8] = new JLabel("<html><div style='text-align: center;'>Out of Stock</html>");
-				itemPics[8] = new JLabel(new ImageIcon("src//pics//no.png"));
+				itemPics[8] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 			}
 			if(g.items[4].getLevel() == 1){
 				itemNames[9] = new JLabel("<html><div style='text-align: center;'>Bomb Upgrade<br>500 money</br></html>");
-				itemPics[9] = new JLabel(new ImageIcon("src//pics//bomb arrow lv.2.png"));
+				itemPics[9] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/bomb arrow lv.2.png")));
 			}else{
 				itemNames[9] = new JLabel("<html><div style='text-align: center;'>Out of Stock</html>");
-				itemPics[9] = new JLabel(new ImageIcon("src//pics//no.png"));
+				itemPics[9] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 			}
 		}else{
 			for(int i = 5; i < 10; i++){
 				itemNames[i] = new JLabel("<html><div style='text-align: center;'>Out of Stock</html>");
-				itemPics[i] = new JLabel(new ImageIcon("src//pics//no.png"));
+				itemPics[i] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 			}
 		}
 		for(int i = 0; i < 10; i ++){
@@ -103,7 +103,7 @@ public class Shop implements WindowListener, KeyListener{
 		window.setLocationRelativeTo(null);
 		window.addWindowListener(this);
 		window.addKeyListener(this);
-		window.setIconImage(new ImageIcon("src//pics//gamelogo.png").getImage());
+		window.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("pics/gamelogo.png")).getImage());
 		window.setVisible(true);
 	}
 	@Override
@@ -195,7 +195,7 @@ public class Shop implements WindowListener, KeyListener{
 							g.playerMoney.setText(g.player + "'s  Money: " + g.money);
 							g.infoPanel.updateUI();
 							g.items[potion].setHas(true);
-							g.items[potion].setPic("src//pics//health potion.png");
+							g.items[potion].setPic("pics/health potion.png");
 							JOptionPane.showMessageDialog(null, "You Bought a Health Potion.");
 						}
 					}else
@@ -215,7 +215,7 @@ public class Shop implements WindowListener, KeyListener{
 							g.playerMoney.setText(g.player + "'s  Money: " + g.money);
 							g.infoPanel.updateUI();
 							g.items[potion].setHas(true);
-							g.items[potion].setPic("src//pics//mana potion.png");
+							g.items[potion].setPic("pics/mana potion.png");
 							JOptionPane.showMessageDialog(null, "You Bought a Mana Potion.");
 						}
 					}else
@@ -236,7 +236,7 @@ public class Shop implements WindowListener, KeyListener{
 							g.infoPanel.updateUI();
 							JOptionPane.showMessageDialog(null, "You ate the Taco and feel stronger!");
 							itemNames[2].setText("Out of Stock");
-							itemPics[2].setIcon(new ImageIcon("src//pics//no.png"));
+							itemPics[2].setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 						}
 					}else
 						JOptionPane.showMessageDialog(null, "You can't pay for that!!");
@@ -256,7 +256,7 @@ public class Shop implements WindowListener, KeyListener{
 						g.infoPanel.updateUI();
 						JOptionPane.showMessageDialog(null, "You drank the Mana-Bull and feel energized!");
 						itemNames[3].setText("Out of Stock");
-						itemPics[3].setIcon(new ImageIcon("src//pics//no.png"));
+						itemPics[3].setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 					}
 				}else
 					JOptionPane.showMessageDialog(null, "You can't pay for that!!");
@@ -272,7 +272,7 @@ public class Shop implements WindowListener, KeyListener{
 								g.playerMoney.setText(g.player + "'s  Money: " + g.money);
 								g.infoPanel.updateUI();
 								g.items[5].setHas(true);
-								g.items[5].setPic("src//pics//glasses.png");
+								g.items[5].setPic("pics/glasses.png");
 								JOptionPane.showMessageDialog(null, "You bought glasses these should help you see better!");
 							}
 						}else
@@ -291,10 +291,10 @@ public class Shop implements WindowListener, KeyListener{
 								g.playerMoney.setText(g.player + "'s  Money: " + g.money);
 								g.infoPanel.updateUI();
 								g.items[0].setLevel(2);
-								g.items[0].setPic("src//pics//sword lv.2.png");
+								g.items[0].setPic("pics/sword lv.2.png");
 								JOptionPane.showMessageDialog(null, "Your sword grows in length, increasing your area of attack!");
 								itemNames[5].setText("Out of Stock");
-								itemPics[5].setIcon(new ImageIcon("src//pics//no.png"));
+								itemPics[5].setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 								mainPanel.updateUI();
 							}
 						}else
@@ -313,10 +313,10 @@ public class Shop implements WindowListener, KeyListener{
 								g.playerMoney.setText(g.player + "'s  Money: " + g.money);
 								g.infoPanel.updateUI();
 								g.items[1].setLevel(2);
-								g.items[1].setPic("src//pics//shield lv.2.png");
+								g.items[1].setPic("pics/shield lv.2.png");
 								JOptionPane.showMessageDialog(null, "Your sheild hardens increasing it's damage absorption!");
 								itemNames[6].setText("Out of Stock");
-								itemPics[6].setIcon(new ImageIcon("src//pics//no.png"));
+								itemPics[6].setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 								mainPanel.updateUI();
 							}
 						}else
@@ -336,10 +336,10 @@ public class Shop implements WindowListener, KeyListener{
 									g.playerMoney.setText(g.player + "'s  Money: " + g.money);
 									g.infoPanel.updateUI();
 									g.items[2].setLevel(2);
-									g.items[2].setPic("src//pics//Bow & Arrow lv.2.png");
+									g.items[2].setPic("pics/Bow & Arrow lv.2.png");
 									JOptionPane.showMessageDialog(null, "Your bow and arrows are strengthened increasing there power!");
 									itemNames[7].setText("Out of Stock");
-									itemPics[7].setIcon(new ImageIcon("src//pics//no.png"));
+									itemPics[7].setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 									mainPanel.updateUI();
 								}
 							}else
@@ -361,10 +361,10 @@ public class Shop implements WindowListener, KeyListener{
 									g.playerMoney.setText(g.player + "'s  Money: " + g.money);
 									g.infoPanel.updateUI();
 									g.items[3].setLevel(2);
-									g.items[3].setPic("src//pics//water shoes lv.2.png");
+									g.items[3].setPic("pics/water shoes lv.2.png");
 									JOptionPane.showMessageDialog(null, "Your water shoes now allow you to walk over holes and naturally walk on water!");
 									itemNames[8].setText("Out of Stock");
-									itemPics[8].setIcon(new ImageIcon("src//pics//no.png"));
+									itemPics[8].setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 									mainPanel.updateUI();
 								}
 							}else
@@ -386,10 +386,10 @@ public class Shop implements WindowListener, KeyListener{
 									g.playerMoney.setText(g.player + "'s  Money: " + g.money);
 									g.infoPanel.updateUI();
 									g.items[4].setLevel(2);
-									g.items[4].setPic("src//pics//bomb arrow lv.2.png");
+									g.items[4].setPic("pics/bomb arrow lv.2.png");
 									JOptionPane.showMessageDialog(null, "Your bomb arrows can hold more gunpowder increasing the explosion!");
 									itemNames[9].setText("Out of Stock");
-									itemPics[9].setIcon(new ImageIcon("src//pics//no.png"));
+									itemPics[9].setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/no.png")));
 									mainPanel.updateUI();
 								}
 							}else

@@ -18,7 +18,7 @@ public class Move {
 			if(UP()&&  g.moveUp){
 				if(g.heroMove.equals("")){
 					g.heroMove = "up";
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " up.gif");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " up.gif"));
 					g.hero.setIcon(g.heroPic);
 					g.gamePanel.updateUI();
 				}
@@ -50,7 +50,7 @@ public class Move {
 			if(DOWN() && g.moveDown){
 				if(g.heroMove.equals("")){
 					g.heroMove = "down";
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " down.gif");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " down.gif"));
 					g.hero.setIcon(g.heroPic);
 					g.gamePanel.updateUI();
 				}
@@ -84,7 +84,7 @@ public class Move {
 			if(LEFT() && g.moveLeft){
 				if(g.heroMove.equals("")){
 					g.heroMove = "left";
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " left.gif");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " left.gif"));
 					g.hero.setIcon(g.heroPic);
 					g.gamePanel.updateUI();
 				}
@@ -117,7 +117,7 @@ public class Move {
 			if(RIGHT() && g.moveRight){
 				if(g.heroMove.equals("")){
 					g.heroMove = "right";
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " right.gif");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " right.gif"));
 					g.hero.setIcon(g.heroPic);
 					g.gamePanel.updateUI();
 				}

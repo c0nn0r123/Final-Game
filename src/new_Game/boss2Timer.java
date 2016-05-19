@@ -21,7 +21,7 @@ public class boss2Timer {
 			if(gonnafire == 140){
 				gonnafire = 0;
 				g.shotObjects.add(new Object("shot", 140, g.bossObject.getY(), 40, 50, 3));
-				g.shots.add(new JLabel(new ImageIcon("src//pics//fire2.png")));
+				g.shots.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/fire2.png"))));
 				g.shots.get(g.shots.size()-1).setSize(g.shotObjects.get(g.shots.size()-1).getWidth(), g.shotObjects.get(g.shots.size()-1).getHeight());
 				g.shots.get(g.shots.size()-1).setLocation(g.shotObjects.get(g.shots.size()-1).getX(), g.shotObjects.get(g.shots.size()-1).getY());
 				g.gamePanel.add(g.shots.get(g.shots.size()-1));
@@ -72,7 +72,7 @@ public class boss2Timer {
 		public void actionPerformed(ActionEvent arg0) {
 				if(firelaser == 4000){
 					moveTimer.stop();
-					g.boss.setIcon(new ImageIcon("src//pics//boss2 charge.png"));
+					g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/boss2 charge.png")));
 					if(charge == 2000){
 						if(movelaser == 0){
 							laserObject = new Object("laser", 140, g.bossObject.getY()-70, 210, 1, 1);
@@ -95,7 +95,7 @@ public class boss2Timer {
 						if(movelaser == 980){
 							laserObject = null;
 							g.gamePanel.remove(laser);
-							g.boss.setIcon(new ImageIcon("src//pics//boss2.gif"));
+							g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/boss2.gif")));
 							moveTimer.start();
 							charge = 0;
 							movelaser = 0;

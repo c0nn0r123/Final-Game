@@ -70,7 +70,7 @@ public class boss3Timer {
 						break;
 				}
 				if(g.shotObjects.size() > prev){
-					g.shots.add(new JLabel(new ImageIcon("src//pics//fire3.png")));
+					g.shots.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/fire3.png"))));
 					g.shots.get(g.shots.size()-1).setSize(20,20);
 					g.shots.get(g.shots.size()-1).setLocation(g.shotObjects.get(g.shots.size()-1).getX(), g.shotObjects.get(g.shots.size()-1).getY());
 					g.gamePanel.add(g.shots.get(g.shots.size()-1));

@@ -18,7 +18,7 @@ public class swordAttack {
 		public void actionPerformed(ActionEvent e) {
 			if(swing){
 				if(g.selectedItem == 0){
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " " + where +" attack lv."+ Integer.toString(g.items[0].getLevel()) +".png");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " " + where +" attack lv."+ Integer.toString(g.items[0].getLevel()) +".png"));
 					if(where.equals("up")){
 						if(g.items[0].getLevel() == 1){
 							g.hero.setLocation(g.x, g.y-30);
@@ -98,23 +98,23 @@ public class swordAttack {
 						}
 					}
 				}else if(g.selectedItem == 1){
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " "+ where + " still.png");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " "+ where + " still.png"));
 					INTERACT();
 				}
 				swing = false;
 			}else{
 				if(g.heroMove.equals("up"))
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " up.gif");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " up.gif"));
 				else if(g.heroMove.equals("down"))
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " down.gif");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " down.gif"));
 				else if(g.heroMove.equals("left"))
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " left.gif");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " left.gif"));
 				else if(g.heroMove.equals("right"))
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " right.gif");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " right.gif"));
 				else if(where.contains("interact"))
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " "+ where.substring(8) + " still.png");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " "+ where.substring(8) + " still.png"));
 				else
-					g.heroPic = new ImageIcon("src//pics//" + g.type + " "+ where +" still.png");
+					g.heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + g.type + " "+ where +" still.png"));
 				time.stop();
 				g.hero.setSize(42, 52);
 				g.hero.setLocation(g.x, g.y);
@@ -180,17 +180,17 @@ public class swordAttack {
 									case "Bow":
 										JOptionPane.showMessageDialog(null, "Congrats you found the bow! It is now accessable through the inventory menu");
 										g.items[2].setHas(true);
-										g.items[2].setPic("src//pics//Bow & Arrow lv." + g.items[2].getLevel() + ".png");
+										g.items[2].setPic("pics/Bow & Arrow lv." + g.items[2].getLevel() + ".png");
 										break;
 									case "Shoes":
 										JOptionPane.showMessageDialog(null, "Congrats you found the Water Shoes! They are now accessable through the inventory menu");
 										g.items[3].setHas(true);
-										g.items[3].setPic("src//pics//water shoes lv."+ g.items[3].getLevel()+".png");
+										g.items[3].setPic("pics/water shoes lv."+ g.items[3].getLevel()+".png");
 										break;
 									case "Bomb":
 										JOptionPane.showMessageDialog(null, "Congrats you found the bomb arrows, a powerful upgrade to regular arrows,\nthey are now accessable through the inventory menu");
 										g.items[4].setHas(true);
-										g.items[4].setPic("src//pics//bomb arrow lv." + g.items[4].getLevel() + ".png");
+										g.items[4].setPic("pics/bomb arrow lv." + g.items[4].getLevel() + ".png");
 										break;
 									case "Money20":
 										JOptionPane.showMessageDialog(null, "Congrats you found 20 money! Don't spend it all at one place.");

@@ -49,7 +49,7 @@ public class GUI implements KeyListener {
 	ArrayList<Object> arrowObjects = new ArrayList<Object>();
 	Object bossObject;
 	JLabel boss = new JLabel();
-	ImageIcon heroPic = new ImageIcon("src//pics//" + type +" down still.png");
+	ImageIcon heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + type +" down still.png"));
 	JLabel hero = new JLabel(heroPic);
 	Object location;
 	JPanel explo = new JPanel();
@@ -83,7 +83,7 @@ public class GUI implements KeyListener {
 					mana -= 5;
 					playerMana.setText(player + "'s  Mana: " + mana);
 					infoPanel.updateUI();
-					arrows.add(new JLabel(new ImageIcon("src//pics//arrow left lv."+Integer.toString(items[2].getLevel())+".png")));
+					arrows.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/arrow left lv."+Integer.toString(items[2].getLevel())+".png"))));
 					arrows.get(arrows.size()-1).setSize(26, 3);
 					arrowObjects.add(new Object("left", x-27, y+25, 3, 26, 1));
 					if(items[2].getLevel() == 2)
@@ -101,7 +101,7 @@ public class GUI implements KeyListener {
 					mana -= 20;
 					playerMana.setText(player + "'s  Mana: " + mana);
 					infoPanel.updateUI();
-					arrows.add(new JLabel(new ImageIcon("src//pics//bomb left lv."+Integer.toString(items[4].getLevel())+".png")));
+					arrows.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/bomb left lv."+Integer.toString(items[4].getLevel())+".png"))));
 					arrows.get(arrows.size()-1).setSize(50, 15);
 					arrowObjects.add(new Object("bombleft", x-51, y+6, 15, 50, 1));
 					arrows.get(arrows.size()-1).setLocation(arrowObjects.get(arrows.size()-1).getX(),arrowObjects.get(arrows.size()-1).getY());
@@ -132,7 +132,7 @@ public class GUI implements KeyListener {
 					mana -= 5;
 					playerMana.setText(player + "'s  Mana: " + mana);
 					infoPanel.updateUI();
-					arrows.add(new JLabel(new ImageIcon("src//pics//arrow up lv."+Integer.toString(items[2].getLevel())+".png")));
+					arrows.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/arrow up lv."+Integer.toString(items[2].getLevel())+".png"))));
 					arrows.get(arrows.size()-1).setSize(3, 26);
 					arrowObjects.add(new Object("up", x+20, y-27, 26, 3, 1));
 					if(items[2].getLevel() == 2)
@@ -149,7 +149,7 @@ public class GUI implements KeyListener {
 					mana -= 20;
 					playerMana.setText(player + "'s  Mana: " + mana);
 					infoPanel.updateUI();
-					arrows.add(new JLabel(new ImageIcon("src//pics//bomb up lv."+Integer.toString(items[4].getLevel())+".png")));
+					arrows.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/bomb up lv."+Integer.toString(items[4].getLevel())+".png"))));
 					arrows.get(arrows.size()-1).setSize(15, 50);
 					arrowObjects.add(new Object("bombup", x+3, y-51, 50, 15, 1));
 					arrows.get(arrows.size()-1).setLocation(arrowObjects.get(arrows.size()-1).getX(),arrowObjects.get(arrows.size()-1).getY());
@@ -177,7 +177,7 @@ public class GUI implements KeyListener {
 					mana -= 5;
 					playerMana.setText(player + "'s  Mana: " + mana);
 					infoPanel.updateUI();
-					arrows.add(new JLabel(new ImageIcon("src//pics//arrow right lv."+Integer.toString(items[2].getLevel())+".png")));
+					arrows.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/arrow right lv."+Integer.toString(items[2].getLevel())+".png"))));
 					arrows.get(arrows.size()-1).setSize(26, 3);
 					arrowObjects.add(new Object("right", x+location.getWidth()+1, y+25, 3, 26, 1));
 					if(items[2].getLevel() == 2)
@@ -195,7 +195,7 @@ public class GUI implements KeyListener {
 					mana -= 20;
 					playerMana.setText(player + "'s  Mana: " + mana);
 					infoPanel.updateUI();
-					arrows.add(new JLabel(new ImageIcon("src//pics//bomb right lv."+Integer.toString(items[4].getLevel())+".png")));
+					arrows.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/bomb right lv."+Integer.toString(items[4].getLevel())+".png"))));
 					arrows.get(arrows.size()-1).setSize(50, 15);
 					arrowObjects.add(new Object("bombright", x+location.getWidth()+1, y+6, 15, 50, 1));
 					arrows.get(arrows.size()-1).setLocation(arrowObjects.get(arrows.size()-1).getX(),arrowObjects.get(arrows.size()-1).getY());
@@ -223,7 +223,7 @@ public class GUI implements KeyListener {
 					mana -= 5;
 					playerMana.setText(player + "'s  Mana: " + mana);
 					infoPanel.updateUI();
-					arrows.add(new JLabel(new ImageIcon("src//pics//arrow down lv."+Integer.toString(items[2].getLevel())+".png")));
+					arrows.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/arrow down lv."+Integer.toString(items[2].getLevel())+".png"))));
 					arrows.get(arrows.size()-1).setSize(3, 26);
 					arrowObjects.add(new Object("down", x+20, y+location.getHeight()+1, 26, 3, 1));
 					if(items[2].getLevel() == 2)
@@ -241,7 +241,7 @@ public class GUI implements KeyListener {
 					mana -= 20;
 					playerMana.setText(player + "'s  Mana: " + mana);
 					infoPanel.updateUI();
-					arrows.add(new JLabel(new ImageIcon("src//pics//bomb down lv."+Integer.toString(items[4].getLevel())+".png")));
+					arrows.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/bomb down lv."+Integer.toString(items[4].getLevel())+".png"))));
 					arrows.get(arrows.size()-1).setSize(15, 50);
 					arrowObjects.add(new Object("bombdown", x+3, y+location.getHeight()+1, 50, 15, 1));
 					arrows.get(arrows.size()-1).setLocation(arrowObjects.get(arrows.size()-1).getX(),arrowObjects.get(arrows.size()-1).getY());
@@ -338,7 +338,7 @@ public class GUI implements KeyListener {
 				moveUp = false;
 				if(heroMove.equals("up")){
 					heroMove = "";
-					heroPic = new ImageIcon("src//pics//" + type + " up still.png");
+					heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + type + " up still.png"));
 					hero.setIcon(heroPic);
 					gamePanel.updateUI();
 				}
@@ -347,7 +347,7 @@ public class GUI implements KeyListener {
 				moveDown = false;
 				if(heroMove.equals("down")){
 					heroMove = "";
-					heroPic = new ImageIcon("src//pics//" + type + " down still.png");
+					heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + type + " down still.png"));
 					hero.setIcon(heroPic);
 					gamePanel.updateUI();
 				}
@@ -356,7 +356,7 @@ public class GUI implements KeyListener {
 				moveLeft = false;
 				if(heroMove.equals("left")){
 					heroMove = "";
-					heroPic = new ImageIcon("src//pics//" + type + " left still.png");
+					heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + type + " left still.png"));
 					hero.setIcon(heroPic);
 					gamePanel.updateUI();
 				}
@@ -366,7 +366,7 @@ public class GUI implements KeyListener {
 				moveRight = false;
 				if(heroMove.equals("right")){
 					heroMove = "";
-					heroPic = new ImageIcon("src//pics//" + type + " right still.png");
+					heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + type + " right still.png"));
 					hero.setIcon(heroPic);
 					gamePanel.updateUI();
 				}
@@ -450,7 +450,7 @@ public class GUI implements KeyListener {
 					y = 70;
 					for(int i = 2; i < 6; i++){
 						items[i].setHas(false);
-						items[i].setPic("src//pics//no.png");
+						items[i].setPic("pics/no.png");
 					}
 					for(int i = 6; i < 10; i++){
 						items[i].setHas(true);
@@ -528,40 +528,40 @@ public class GUI implements KeyListener {
 			objects.add(new JLabel());
 			if(feildObjects.get(i).getName().contains("tree")){
 				if(feildObjects.get(i).getName().contains("invisible") && items[5].getHas())
-				objects.get(i).setIcon(new ImageIcon("src//pics//tree.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/tree.png")));
 				else if(!(feildObjects.get(i).getName().contains("invisible")))
-					objects.get(i).setIcon(new ImageIcon("src//pics//tree.png"));
+					objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/tree.png")));
 			}else if(feildObjects.get(i).getName().equals("water"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//water.gif"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/water.gif")));
 			else if(feildObjects.get(i).getName().equals("hole"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//hole.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/hole.png")));
 			else if(feildObjects.get(i).getName().equals("house"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//house.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/house.png")));
 			else if(feildObjects.get(i).getName().contains("door"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//door.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/door.png")));
 			else if(feildObjects.get(i).getName().equals("wall"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//wall.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/wall.png")));
 			else if(feildObjects.get(i).getName().equals("villager"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//civilian.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/civilian.png")));
 			else if(feildObjects.get(i).getName().equals("mayor"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//mayor.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/mayor.png")));
 			else if(feildObjects.get(i).getName().equals("owner"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//owner.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/owner.png")));
 			else if(feildObjects.get(i).getName().contains("cave"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//cave.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/cave.png")));
 			else if(feildObjects.get(i).getName().equals("chest"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//chest.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/chest.png")));
 			else if(feildObjects.get(i).getName().equals("partwall"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//partwall.png"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/partwall.png")));
 			else if(feildObjects.get(i).getName().equals("fairy"))
-				objects.get(i).setIcon(new ImageIcon("src//pics//fairy.gif"));
+				objects.get(i).setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/fairy.gif")));
 			objects.get(i).setSize(feildObjects.get(i).getWidth(),feildObjects.get(i).getHeight());
 			objects.get(i).setLocation(feildObjects.get(i).getX(), feildObjects.get(i).getY());
 			gamePanel.add(objects.get(i));
 		}
 		for(int i = 0; i < enemyObjects.size(); i++){
 			if(enemyObjects.get(i).getName().equals("enemy"))
-				enemy.add(new JLabel(new ImageIcon("src//pics//enemy.gif")));
+				enemy.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/enemy.gif"))));
 				enemy.get(i).setSize(enemyObjects.get(i).getWidth(), enemyObjects.get(i).getHeight());
 				enemy.get(i).setLocation(enemyObjects.get(i).getX(), enemyObjects.get(i).getY());
 				gamePanel.add(enemy.get(i));
@@ -571,15 +571,15 @@ public class GUI implements KeyListener {
 		et.timer.start();
 		if(!(bossObject == null)){
 			if(dungeon1)
-				boss.setIcon(new ImageIcon("src//pics//boss 1.gif"));
+				boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/boss 1.gif")));
 			else if(dungeon2)
-				boss.setIcon(new ImageIcon("src//pics//boss2.gif"));
+				boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/boss2.gif")));
 			else if(dungeon3)
-				boss.setIcon(new ImageIcon("src//pics//boss3.gif"));
+				boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/boss3.gif")));
 			else if(dungeon4)
-				boss.setIcon(new ImageIcon("src//pics//boss4.gif"));
+				boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/boss4.gif")));
 			else if(hiddendungeon)
-				boss.setIcon(new ImageIcon("src//pics//shadow left.gif"));
+				boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource("pics/shadow left.gif")));
 			boss.setSize(bossObject.getWidth(), bossObject.getHeight());
 			boss.setLocation(bossObject.getX(), bossObject.getY());
 			gamePanel.add(boss);
@@ -589,7 +589,7 @@ public class GUI implements KeyListener {
 
 	@SuppressWarnings("unused")
 	public void createMap(){
-		heroPic = new ImageIcon("src//pics//" + type +" down still.png");
+		heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + type +" down still.png"));
 		hero.setIcon(heroPic);
 		JOptionPane.showMessageDialog(null, "welcome to your adventure " + player);
 		infoPanel.setLayout(null);
@@ -617,7 +617,7 @@ public class GUI implements KeyListener {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.addKeyListener(this);
 		window.setLocationRelativeTo(null);
-		window.setIconImage(new ImageIcon("src//pics//gamelogo.png").getImage());
+		window.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("pics/gamelogo.png")).getImage());
 		location = new Object("hero",x,y,52,42,health);
 		m = new Move(this);
 		sa = new swordAttack(this);
@@ -726,7 +726,7 @@ public class GUI implements KeyListener {
 		moveLeft = false;
 		moveRight = false;
 		heroMove = "";
-		heroPic = new ImageIcon("src//pics//" + type + " down still.png");
+		heroPic = new ImageIcon(getClass().getClassLoader().getResource("pics/" + type + " down still.png"));
 		hero.setIcon(heroPic);
 		gamePanel.updateUI();
 		et.timer.stop();

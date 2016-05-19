@@ -6,8 +6,11 @@ import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
+
 import javax.swing.*;
 
 public class openSave implements MouseListener{
@@ -26,7 +29,7 @@ public class openSave implements MouseListener{
 	JPanel[] options = new JPanel[4];
 	JLabel savedGames = new JLabel("<html><font color='white'><b><u>Saved Games</u></b></html>");
 	JLabel option = new JLabel("<html><font color='white'><b><u>Options</u></b></html>");
-	JLabel background = new JLabel(new ImageIcon("src//pics//mainmenu.png"));
+	JLabel background = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/mainmenu.png")));
 	//10 for char name
 	@SuppressWarnings("resource")
 	public openSave(GUI g){
@@ -44,10 +47,11 @@ public class openSave implements MouseListener{
 		this.g = g;
 		try {
 			for(int i = 0; i < 3; i++){
-			BufferedReader rd = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//Charinfo"));
+				File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/Charinfo").toURI());
+				BufferedReader rd = new BufferedReader(new FileReader(find));
 			files[i] = rd.readLine();
 			}
-		} catch (IOException e){
+		} catch (IOException | URISyntaxException e){
 		}
 		int y = 500;
 		for(int i = 0; i < 3; i ++){
@@ -100,7 +104,7 @@ public class openSave implements MouseListener{
 		window.setLocationRelativeTo(null);
 		window.setResizable(false);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setIconImage(new ImageIcon("src//pics//gamelogo.png").getImage());
+		window.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("pics/gamelogo.png")).getImage());
 		window.setVisible(true);
 	}
 
@@ -159,7 +163,8 @@ public class openSave implements MouseListener{
 				g.file = i;
 				if(!copy2){
 					try {
-						BufferedReader Charinfo = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//Charinfo"));
+						File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/Charinfo").toURI());
+						BufferedReader Charinfo = new BufferedReader(new FileReader(find));
 						g.player = Charinfo.readLine();
 						g.map1 = Integer.parseInt(Charinfo.readLine());
 						g.map2 = Integer.parseInt(Charinfo.readLine());
@@ -203,7 +208,8 @@ public class openSave implements MouseListener{
 							else
 								g.beatboss[j] = false;
 						}
-						BufferedReader Feilditems = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//items//Feilditems"));
+						find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/items/Feilditems").toURI());
+						BufferedReader Feilditems = new BufferedReader(new FileReader(find));
 						GUI.chestInfo[0].clear();
 						for(int x = 0; x < 10; x++){
 							String item = Feilditems.readLine(), open = Feilditems.readLine();
@@ -213,7 +219,8 @@ public class openSave implements MouseListener{
 							int map1 = Integer.parseInt(Feilditems.readLine()), map2 = Integer.parseInt(Feilditems.readLine());
 							GUI.chestInfo[0].add(new chest(item, opened, map1, map2));
 						}
-						BufferedReader Dungeon1items = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//items//Dungeon1items"));
+						find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/items/Dungeon1items").toURI());
+						BufferedReader Dungeon1items = new BufferedReader(new FileReader(find));
 						GUI.chestInfo[1].clear();
 						for(int x = 0; x < 4; x++){
 							String item = Dungeon1items.readLine(), open = Dungeon1items.readLine();
@@ -223,7 +230,8 @@ public class openSave implements MouseListener{
 							int map1 = Integer.parseInt(Dungeon1items.readLine()), map2 = Integer.parseInt(Dungeon1items.readLine());
 							GUI.chestInfo[1].add(new chest(item, opened, map1, map2));
 						}
-						BufferedReader Dungeon2items = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//items//Dungeon2items"));
+						find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/items/Dungeon2items").toURI());
+						BufferedReader Dungeon2items = new BufferedReader(new FileReader(find));
 						GUI.chestInfo[2].clear();
 						for(int x = 0; x < 4; x++){
 							String item = Dungeon2items.readLine(), open = Dungeon2items.readLine();
@@ -233,7 +241,8 @@ public class openSave implements MouseListener{
 							int map1 = Integer.parseInt(Dungeon2items.readLine()), map2 = Integer.parseInt(Dungeon2items.readLine());
 							GUI.chestInfo[2].add(new chest(item, opened, map1, map2));
 						}
-						BufferedReader Dungeon3items = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//items//Dungeon3items"));
+						find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/items/Dungeon3items").toURI());
+						BufferedReader Dungeon3items = new BufferedReader(new FileReader(find));
 						GUI.chestInfo[3].clear();
 						for(int x = 0; x < 8; x++){
 							String item = Dungeon3items.readLine(), open = Dungeon3items.readLine();
@@ -243,7 +252,8 @@ public class openSave implements MouseListener{
 							int map1 = Integer.parseInt(Dungeon3items.readLine()), map2 = Integer.parseInt(Dungeon3items.readLine());
 							GUI.chestInfo[3].add(new chest(item, opened, map1, map2));
 						}
-						BufferedReader overmap = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//maps//overmap"));
+						find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/maps/overmap").toURI());
+						BufferedReader overmap = new BufferedReader(new FileReader(find));
 						for(int x = 0; x < 10; x++){
 							for(int y = 0; y < 10; y++){
 								if(overmap.readLine().equals("True"))
@@ -252,7 +262,8 @@ public class openSave implements MouseListener{
 									g.hasbeenovermap[x][y] = false;
 							}
 						}
-						BufferedReader dungeon1map = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//maps//dungeon1map"));
+						find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/maps/dungeon1map").toURI());
+						BufferedReader dungeon1map = new BufferedReader(new FileReader(find));
 						for(int x = 0; x < 5; x++){
 							for(int y = 0; y < 5; y++){
 								if(dungeon1map.readLine().equals("True"))
@@ -261,7 +272,8 @@ public class openSave implements MouseListener{
 									g.hasbeendungeon1map[x][y] = false;
 							}
 						}
-						BufferedReader dungeon2map = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//maps//dungeon2map"));
+						find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/maps/dungeon2map").toURI());
+						BufferedReader dungeon2map = new BufferedReader(new FileReader(find));
 						for(int x = 0; x < 5; x++){
 							for(int y = 0; y < 5; y++){
 								if(dungeon2map.readLine().equals("True"))
@@ -270,7 +282,8 @@ public class openSave implements MouseListener{
 									g.hasbeendungeon2map[x][y] = false;
 							}
 						}
-						BufferedReader dungeon3map = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//maps//dungeon3map"));
+						find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/maps/dungeon3map").toURI());
+						BufferedReader dungeon3map = new BufferedReader(new FileReader(find));
 						for(int x = 0; x < 5; x++){
 							for(int y = 0; y < 5; y++){
 								if(dungeon3map.readLine().equals("True"))
@@ -279,7 +292,8 @@ public class openSave implements MouseListener{
 									g.hasbeendungeon3map[x][y] = false;
 							}
 						}
-						BufferedReader dungeon4map = new BufferedReader(new FileReader("src//SaveFile//game" + i + "//maps//dungeon4map"));
+						find = new File(getClass().getClassLoader().getResource("SaveFile/game" + i + "/maps/dungeon4map").toURI());
+						BufferedReader dungeon4map = new BufferedReader(new FileReader(find));
 						for(int x = 0; x < 5; x++){
 							for(int y = 0; y < 5; y++){
 								if(dungeon4map.readLine().equals("True"))
@@ -288,7 +302,7 @@ public class openSave implements MouseListener{
 									g.hasbeendungeon4map[x][y] = false;
 							}
 						}
-					} catch (IOException e1) {
+					} catch (IOException | URISyntaxException e1) {
 					}
 					if(!deletefile){
 						if(!copy1){
@@ -336,16 +350,16 @@ public class openSave implements MouseListener{
 							g.maxMana = 100;
 							g.manaBull = false;
 							g.money = 0;
-							g.items[0] = new Item("TrueLv.1src//pics//sword lv.1.png");
-							g.items[1] = new Item("TrueLv.1src//pics//shield lv.1.png");
-							g.items[2] = new Item("FalseLv.1src//pics//no.png");
-							g.items[3] = new Item("FalseLv.1src//pics//no.png");
-							g.items[4] = new Item("FalseLv.1src//pics//no.png");
-							g.items[5] = new Item("FalseLv.1src//pics//no.png");
-							g.items[6] = new Item("TrueLv.1src//pics//health potion.png");
-							g.items[7] = new Item("TrueLv.1src//pics//health potion.png");
-							g.items[8] = new Item("TrueLv.1src//pics//mana potion.png");
-							g.items[9] = new Item("TrueLv.1src//pics//mana potion.png");
+							g.items[0] = new Item("TrueLv.1pics/sword lv.1.png");
+							g.items[1] = new Item("TrueLv.1pics/shield lv.1.png");
+							g.items[2] = new Item("FalseLv.1pics/no.png");
+							g.items[3] = new Item("FalseLv.1pics/no.png");
+							g.items[4] = new Item("FalseLv.1pics/no.png");
+							g.items[5] = new Item("FalseLv.1pics/no.png");
+							g.items[6] = new Item("TrueLv.1pics/health potion.png");
+							g.items[7] = new Item("TrueLv.1pics/health potion.png");
+							g.items[8] = new Item("TrueLv.1pics/mana potion.png");
+							g.items[9] = new Item("TrueLv.1pics/mana potion.png");
 							g.selectedItem = 0;
 							g.dungeon1 = false;
 							g.dungeon2 = false;

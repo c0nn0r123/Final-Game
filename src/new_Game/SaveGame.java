@@ -1,59 +1,62 @@
 package new_Game;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class SaveGame {
 
 	public SaveGame(GUI g){
 		try {
-			BufferedWriter Charinfo = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//Charinfo"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/Charinfo").toURI());
+			BufferedWriter Charinfo = new BufferedWriter(new FileWriter(find));
 			Charinfo.write(g.player);
 			Charinfo.newLine();
-//			if(g.dungeon1 || g.dungeon2){
-//				Charinfo.write("4");
-//				Charinfo.newLine();
-//				Charinfo.write("2");
-//				Charinfo.newLine();
-//				Charinfo.write("360");
-//				Charinfo.newLine();
-//				Charinfo.write("575");
-//			}else if(g.dungeon3){
-//				if(g.beatboss[2]){
-//					Charinfo.write("4");
-//					Charinfo.newLine();
-//					Charinfo.write("3");
-//					Charinfo.newLine();
-//					Charinfo.write("630");
-//					Charinfo.newLine();
-//					Charinfo.write("350");
-//				}else{
-//					Charinfo.write("2");
-//					Charinfo.newLine();
-//					Charinfo.write("2");
-//					Charinfo.newLine();
-//					Charinfo.write("295");
-//					Charinfo.newLine();
-//					Charinfo.write("220");
-//				}
-//			}else if(g.dungeon4){
-//				Charinfo.write("0");
-//				Charinfo.newLine();
-//				Charinfo.write("0");
-//				Charinfo.newLine();
-//				Charinfo.write("85");
-//				Charinfo.newLine();
-//				Charinfo.write("75");
-//			}else if(g.hiddendungeon){
-//				Charinfo.write("2");
-//				Charinfo.newLine();
-//				Charinfo.write("0");
-//				Charinfo.newLine();
-//				Charinfo.write("80");
-//				Charinfo.newLine();
-//				Charinfo.write("360");
-//			}else{
+			if(g.dungeon1 || g.dungeon2){
+				Charinfo.write("4");
+				Charinfo.newLine();
+				Charinfo.write("2");
+				Charinfo.newLine();
+				Charinfo.write("360");
+				Charinfo.newLine();
+				Charinfo.write("575");
+			}else if(g.dungeon3){
+				if(g.beatboss[2]){
+					Charinfo.write("4");
+					Charinfo.newLine();
+					Charinfo.write("3");
+					Charinfo.newLine();
+					Charinfo.write("630");
+					Charinfo.newLine();
+					Charinfo.write("350");
+				}else{
+					Charinfo.write("2");
+					Charinfo.newLine();
+					Charinfo.write("2");
+					Charinfo.newLine();
+					Charinfo.write("295");
+					Charinfo.newLine();
+					Charinfo.write("220");
+				}
+			}else if(g.dungeon4){
+				Charinfo.write("0");
+				Charinfo.newLine();
+				Charinfo.write("0");
+				Charinfo.newLine();
+				Charinfo.write("85");
+				Charinfo.newLine();
+				Charinfo.write("75");
+			}else if(g.hiddendungeon){
+				Charinfo.write("2");
+				Charinfo.newLine();
+				Charinfo.write("0");
+				Charinfo.newLine();
+				Charinfo.write("80");
+				Charinfo.newLine();
+				Charinfo.write("360");
+			}else{
 				Charinfo.write(Integer.toString(g.map1));
 				Charinfo.newLine();
 				Charinfo.write(Integer.toString(g.map2));
@@ -61,7 +64,7 @@ public class SaveGame {
 				Charinfo.write(Integer.toString(g.x));
 				Charinfo.newLine();
 				Charinfo.write(Integer.toString(g.y));
-//			}
+			}
 			Charinfo.newLine();
 			Charinfo.write(Integer.toString(g.health));
 			Charinfo.newLine();
@@ -110,11 +113,12 @@ public class SaveGame {
 				Charinfo.newLine();
 			}
 			Charinfo.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 		try{
-			BufferedWriter Feilditems = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//items//Feilditems"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/items/Feilditems").toURI());
+			BufferedWriter Feilditems = new BufferedWriter(new FileWriter(find));
 			for(int i = 0; i < GUI.chestInfo[0].size(); i++){
 				Feilditems.write(GUI.chestInfo[0].get(i).getItem());
 				Feilditems.newLine();
@@ -129,11 +133,12 @@ public class SaveGame {
 				Feilditems.newLine();
 			}
 			Feilditems.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 		try{
-			BufferedWriter Dungeon1items = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//items//Dungeon1items"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/items/Dungeon1items").toURI());
+			BufferedWriter Dungeon1items = new BufferedWriter(new FileWriter(find));
 			for(int i = 0; i < GUI.chestInfo[1].size(); i++){
 				Dungeon1items.write(GUI.chestInfo[1].get(i).getItem());
 				Dungeon1items.newLine();
@@ -148,11 +153,12 @@ public class SaveGame {
 				Dungeon1items.newLine();
 			}
 			Dungeon1items.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 		try{
-			BufferedWriter Dungeon2items = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//items//Dungeon2items"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/items/Dungeon2items").toURI());
+			BufferedWriter Dungeon2items = new BufferedWriter(new FileWriter(find));
 			for(int i = 0; i < GUI.chestInfo[2].size(); i++){
 				Dungeon2items.write(GUI.chestInfo[2].get(i).getItem());
 				Dungeon2items.newLine();
@@ -167,11 +173,12 @@ public class SaveGame {
 				Dungeon2items.newLine();
 			}
 			Dungeon2items.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 		try{
-			BufferedWriter Dungeon3items = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//items//Dungeon3items"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/items/Dungeon3items").toURI());
+			BufferedWriter Dungeon3items = new BufferedWriter(new FileWriter(find));
 			for(int i = 0; i < GUI.chestInfo[3].size(); i++){
 				Dungeon3items.write(GUI.chestInfo[3].get(i).getItem());
 				Dungeon3items.newLine();
@@ -186,11 +193,12 @@ public class SaveGame {
 				Dungeon3items.newLine();
 			}
 			Dungeon3items.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 		try{
-			BufferedWriter overmap = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//maps//overmap"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/maps/overmap").toURI());
+			BufferedWriter overmap = new BufferedWriter(new FileWriter(find));
 			for(int i = 0; i < 10; i++){
 				for(int j = 0; j < 10; j++){
 					if(g.hasbeenovermap[i][j])
@@ -201,11 +209,12 @@ public class SaveGame {
 				}
 			}
 			overmap.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 		try{
-			BufferedWriter dungeon1map = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//maps//dungeon1map"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/maps/dungeon1map").toURI());
+			BufferedWriter dungeon1map = new BufferedWriter(new FileWriter(find));
 			for(int i = 0; i < 5; i++){
 				for(int j = 0; j < 5; j++){
 					if(g.hasbeendungeon1map[i][j])
@@ -216,11 +225,12 @@ public class SaveGame {
 				}
 			}
 			dungeon1map.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 		try{
-			BufferedWriter dungeon2map = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//maps//dungeon2map"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/maps/dungeon2map").toURI());
+			BufferedWriter dungeon2map = new BufferedWriter(new FileWriter(find));
 			for(int i = 0; i < 5; i++){
 				for(int j = 0; j < 5; j++){
 					if(g.hasbeendungeon2map[i][j])
@@ -231,11 +241,12 @@ public class SaveGame {
 				}
 			}
 			dungeon2map.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 		try{
-			BufferedWriter dungeon3map = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//maps//dungeon3map"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/maps/dungeon3map").toURI());
+			BufferedWriter dungeon3map = new BufferedWriter(new FileWriter(find));
 			for(int i = 0; i < 5; i++){
 				for(int j = 0; j < 5; j++){
 					if(g.hasbeendungeon3map[i][j])
@@ -246,11 +257,12 @@ public class SaveGame {
 				}
 			}
 			dungeon3map.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 		try{
-			BufferedWriter dungeon4map = new BufferedWriter(new FileWriter("src//SaveFile//game" + g.file + "//maps//dungeon4map"));
+			File find = new File(getClass().getClassLoader().getResource("SaveFile/game" + g.file + "/maps/dungeon4map").toURI());
+			BufferedWriter dungeon4map = new BufferedWriter(new FileWriter(find));
 			for(int i = 0; i < 5; i++){
 				for(int j = 0; j < 5; j++){
 					if(g.hasbeendungeon4map[i][j])
@@ -261,7 +273,7 @@ public class SaveGame {
 				}
 			}
 			dungeon4map.close();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			
 		}
 	}

@@ -145,7 +145,7 @@ public class Map implements WindowListener, KeyListener{
 		window.add(mainPanel);
 		window.setLocationRelativeTo(null);
 		window.setResizable(false);
-		window.setIconImage(new ImageIcon("src//pics//gamelogo.png").getImage());
+		window.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("pics/gamelogo.png")).getImage());
 		window.setVisible(true);
 		window.addWindowListener(this);
 		window.addKeyListener(this);

@@ -93,7 +93,7 @@ public class boss4Timer {
 				g.shotObjects.add(new Object("left", g.bossObject.getX()-10, g.bossObject.getY()+(g.bossObject.getHeight()/2)-5, 10, 10, 20));
 				g.shotObjects.add(new Object("right", g.bossObject.getX()+g.bossObject.getWidth(), g.bossObject.getY()+(g.bossObject.getWidth()/2)-5, 10, 10, 20));
 				for(int i = 0; i < 8; i++){
-					g.shots.add(new JLabel(new ImageIcon("src//pics//fire4.gif")));
+					g.shots.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/fire4.gif"))));
 					g.shots.get(g.shots.size()-1).setSize(g.shotObjects.get(g.shotObjects.size()-(8-i)).getWidth(), g.shotObjects.get(g.shotObjects.size()-(8-i)).getHeight());
 					g.shots.get(g.shots.size()-1).setLocation(g.shotObjects.get(g.shotObjects.size()-(8-i)).getX(), g.shotObjects.get(g.shotObjects.size()-(8-i)).getY());
 					g.gamePanel.add(g.shots.get(g.shots.size()-1));

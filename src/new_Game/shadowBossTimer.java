@@ -14,7 +14,7 @@ public class shadowBossTimer {
 	GUI g;
 	
 	Random gen = new Random();
-	String attack = "", icon = "src//pics//shadow left.gif", bossmove = "";
+	String attack = "", icon = "pics/shadow left.gif", bossmove = "";
 	@SuppressWarnings("serial")
 	Timer hold = new Timer(1000, new AbstractAction(){
 		public void actionPerformed(ActionEvent arg0) {
@@ -48,8 +48,8 @@ public class shadowBossTimer {
 					g.bossObject.setX(g.bossObject.getX()-1);
 					bossmove = "left";
 					if(!comeon){
-						icon = "src//pics//shadow left.gif";
-						g.boss.setIcon(new ImageIcon(icon));
+						icon = "pics/shadow left.gif";
+						g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 					}
 					if(check == 200){
 						if(gen.nextInt(5) == 2)
@@ -59,8 +59,8 @@ public class shadowBossTimer {
 				}else{
 					bossmove = "";
 					if(!comeon){
-						icon = "src//pics//shadow left still.png";
-						g.boss.setIcon(new ImageIcon(icon));
+						icon = "pics/shadow left still.png";
+						g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 					}
 				}
 			}
@@ -69,8 +69,8 @@ public class shadowBossTimer {
 					g.bossObject.setX(g.bossObject.getX()+1);
 					bossmove = "right";
 					if(!comeon){
-						icon = "src//pics//shadow right.gif";
-						g.boss.setIcon(new ImageIcon(icon));
+						icon = "pics/shadow right.gif";
+						g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 					}
 					if(check == 200){
 						if(gen.nextInt(5) == 4)
@@ -81,8 +81,8 @@ public class shadowBossTimer {
 					backup = false;
 					bossmove = "";
 					if(!comeon){
-						icon = "src//pics//shadow right still.png";
-						g.boss.setIcon(new ImageIcon(icon));
+						icon = "pics/shadow right still.png";
+						g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 					}
 				}
 			}
@@ -92,15 +92,15 @@ public class shadowBossTimer {
 				if(bossmove.equals("")){
 					bossmove = "up";
 					if(!comeon){
-						icon = "src//pics//shadow up.gif";
-						g.boss.setIcon(new ImageIcon(icon));
+						icon = "pics/shadow up.gif";
+						g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 					}
 				}
 				}else{
 					if(bossmove.equals("up")){
 						if(!comeon){
-							icon = "src//pics//shadow up still.png";
-							g.boss.setIcon(new ImageIcon(icon));
+							icon = "pics/shadow up still.png";
+							g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 						}
 						bossmove = "";
 					}
@@ -111,16 +111,16 @@ public class shadowBossTimer {
 					g.bossObject.setY(g.bossObject.getY()+1);
 					if(bossmove.equals("")){
 						if(!comeon){
-							icon = "src//pics//shadow down.gif";
-							g.boss.setIcon(new ImageIcon(icon));
+							icon = "pics/shadow down.gif";
+							g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 						}
 						bossmove = "down";
 					}
 				}else{
 					if(bossmove.equals("down")){
 						if(!comeon){
-							icon = "src//pics//shadow down still.png";
-							g.boss.setIcon(new ImageIcon(icon));
+							icon = "pics/shadow down still.png";
+							g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 						}
 						bossmove = "";
 					}
@@ -135,8 +135,8 @@ public class shadowBossTimer {
 						g.bossObject.setWidth(g.bossObject.getWidth() + 50);
 						g.boss.setLocation(g.bossObject.getX(), g.bossObject.getY());
 						g.boss.setSize(g.bossObject.getWidth(), g.bossObject.getHeight());
-						icon = "src//pics//shadow left attack lv.2.png";
-						g.boss.setIcon(new ImageIcon(icon));
+						icon = "pics/shadow left attack lv.2.png";
+						g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 						g.gamePanel.updateUI();
 						sword.start();
 						g.damage("shadow");
@@ -145,7 +145,7 @@ public class shadowBossTimer {
 					}
 				}
 			}else if(((g.bossObject.getX() - g.location.getX() >= 200 && backup) || (g.bossObject.getX() - g.location.getX() >= 250)) && !holding){
-				g.arrows.add(new JLabel(new ImageIcon("src//pics//arrow left lv.2.png")));
+				g.arrows.add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("pics/arrow left lv.2.png"))));
 				g.arrows.get(g.arrows.size()-1).setSize(26, 3);
 				g.arrowObjects.add(new Object("left", g.bossObject.getX()-27, g.bossObject.getY()+25, 3, 26, 1));
 				g.arrowObjects.get(g.arrowObjects.size()-1).setHealth(2);
@@ -161,10 +161,10 @@ public class shadowBossTimer {
 	Timer sword = new Timer(100, new AbstractAction(){
 		public void actionPerformed(ActionEvent arg0) {
 				if(!bossmove.equals(""))
-					icon = "src//pics//shadow "+bossmove+".gif";
+					icon = "pics/shadow "+bossmove+".gif";
 				else
-					icon = "src//pics//shadow left still.png";
-				g.boss.setIcon(new ImageIcon(icon));
+					icon = "pics/shadow left still.png";
+				g.boss.setIcon(new ImageIcon(getClass().getClassLoader().getResource(icon)));
 				sword.stop();
 				g.boss.setSize(42, 52);
 				g.bossObject.setWidth(g.bossObject.getWidth()-50);

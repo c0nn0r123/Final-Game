@@ -19,16 +19,9 @@ public class inventory implements WindowListener, KeyListener{
 	public inventory(GUI g){
 		this.g = g;
 		selectedItem = g.selectedItem;
-		items[0] = new JLabel(new ImageIcon(g.items[0].getPic()));
-		items[1] = new JLabel(new ImageIcon(g.items[1].getPic()));
-		items[2] = new JLabel(new ImageIcon(g.items[2].getPic()));
-		items[3] = new JLabel(new ImageIcon(g.items[3].getPic()));
-		items[4] = new JLabel(new ImageIcon(g.items[4].getPic()));
-		items[5] = new JLabel(new ImageIcon(g.items[5].getPic()));
-		items[6] = new JLabel(new ImageIcon(g.items[6].getPic()));
-		items[7] = new JLabel(new ImageIcon(g.items[7].getPic()));
-		items[8] = new JLabel(new ImageIcon(g.items[8].getPic()));
-		items[9] = new JLabel(new ImageIcon(g.items[9].getPic()));
+		for(int i = 0; i < 10; i++){
+			items[i] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource(g.items[i].getPic())));			
+		}
 		itemNames[0] = new JLabel("<html><div style='text-align: center;'>Sword</html>");
 		itemNames[1] = new JLabel("<html><div style='text-align: center;'>Shield/Interact</html>");
 		if(g.items[2].getHas())
@@ -79,7 +72,7 @@ public class inventory implements WindowListener, KeyListener{
 		window.setLocationRelativeTo(null);
 		window.addKeyListener(this);
 		window.addWindowListener(this);
-		window.setIconImage(new ImageIcon("src//pics//gamelogo.png").getImage());
+		window.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("pics/gamelogo.png")).getImage());
 		window.setVisible(true);
 	}
 	@Override
@@ -174,7 +167,7 @@ public class inventory implements WindowListener, KeyListener{
 							g.infoPanel.updateUI();
 							JOptionPane.showMessageDialog(null, "THE GLASSES GRANT YOU IMMENSE POWER AND HEAL YOUR WOUNDS!");
 							g.items[5].setHas(false);
-							g.items[5].setPic("src//pics//no.png");
+							g.items[5].setPic("pics/no.png");
 							itemNames[5].setText("???????");
 							items[5].setIcon(new ImageIcon(g.items[selectedItem].getPic()));
 							itemPanels[5].updateUI();
@@ -191,7 +184,7 @@ public class inventory implements WindowListener, KeyListener{
 							g.playerHealth.setText(g.player + "'s  Health: " + g.health);
 							g.infoPanel.updateUI();
 							g.items[selectedItem].setHas(false);
-							g.items[selectedItem].setPic("src//pics//empty health potion.png");
+							g.items[selectedItem].setPic("pics/empty health potion.png");
 							items[selectedItem].setIcon(new ImageIcon(g.items[selectedItem].getPic()));
 							itemNames[selectedItem].setText("Empty");
 							itemPanels[selectedItem].updateUI();
@@ -208,7 +201,7 @@ public class inventory implements WindowListener, KeyListener{
 							g.playerMana.setText(g.player + "'s  Mana: " + g.mana);
 							g.infoPanel.updateUI();
 							g.items[selectedItem].setHas(false);
-							g.items[selectedItem].setPic("src//pics//empty mana potion.png");
+							g.items[selectedItem].setPic("pics/empty mana potion.png");
 							items[selectedItem].setIcon(new ImageIcon(g.items[selectedItem].getPic()));
 							itemNames[selectedItem].setText("Empty");
 							itemPanels[selectedItem].updateUI();
