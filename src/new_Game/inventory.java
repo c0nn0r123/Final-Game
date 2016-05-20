@@ -8,7 +8,10 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.*;
 
-public class inventory implements WindowListener, KeyListener{
+import ch.aplu.xboxcontroller.XboxController;
+import ch.aplu.xboxcontroller.XboxControllerListener;
+
+public class inventory implements WindowListener, KeyListener,XboxControllerListener{
 	GUI g;
 	JFrame window = new JFrame();
 	JPanel mainPanel = new JPanel(new GridLayout(2,5,2,2));
@@ -16,11 +19,17 @@ public class inventory implements WindowListener, KeyListener{
 	JLabel[] items = new JLabel[10];
 	JLabel[] itemNames = new JLabel[10];
 	int selectedItem = 0;
-	public inventory(GUI g){
+	// XBAX ONNNn
+	XboxController xc;
+	double dir = 0;
+	double mag = 0;
+	public inventory(GUI g,XboxController xc){
 		this.g = g;
+		this.xc = xc;
+		xc.addXboxControllerListener(this);
 		selectedItem = g.selectedItem;
 		for(int i = 0; i < 10; i++){
-			items[i] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource(g.items[i].getPic())));			
+
 		}
 		itemNames[0] = new JLabel("<html><div style='text-align: center;'>Sword</html>");
 		itemNames[1] = new JLabel("<html><div style='text-align: center;'>Shield/Interact</html>");
@@ -246,4 +255,256 @@ public class inventory implements WindowListener, KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void back(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void buttonA(boolean arg0) {
+		// TODO Auto-generated method stub
+	
+		if(g.items[selectedItem].getHas()){
+			switch(selectedItem){
+			case 5:
+				if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Do you wish to put on the glasses", "Use Item",
+				JOptionPane.YES_NO_OPTION)){
+					g.mana = 100;
+					g.health = g.maxHealth;
+					g.playerHealth.setText(g.player + "'s  Health: " + g.health);
+					g.playerMana.setText(g.player + "'s  Mana: " + g.mana);
+					g.infoPanel.updateUI();
+					JOptionPane.showMessageDialog(null, "THE GLASSES GRANT YOU IMMENSE POWER AND HEAL YOUR WOUNDS!");
+					g.items[5].setHas(false);
+					g.items[5].setPic("src//pics//no.png");
+					itemNames[5].setText("???????");
+					items[5].setIcon(new ImageIcon(g.items[selectedItem].getPic()));
+					itemPanels[5].updateUI();
+				}
+				break;
+			case 6:
+			case 7:
+				if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Do you wish to restore your health", "Use Item",
+				JOptionPane.YES_NO_OPTION)){
+					if(g.items[6].getLevel() == 1)
+						g.health = g.maxHealth;
+					else
+						g.health = g.maxHealth + 12;
+					g.playerHealth.setText(g.player + "'s  Health: " + g.health);
+					g.infoPanel.updateUI();
+					g.items[selectedItem].setHas(false);
+					g.items[selectedItem].setPic("src//pics//empty health potion.png");
+					items[selectedItem].setIcon(new ImageIcon(g.items[selectedItem].getPic()));
+					itemNames[selectedItem].setText("Empty");
+					itemPanels[selectedItem].updateUI();
+				}
+				break;
+			case 8:
+			case 9:
+				if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Do you wish to restore your mana", "Use Item",
+				JOptionPane.YES_NO_OPTION)){
+					if(g.items[8].getLevel() == 1)
+						g.mana = g.maxMana;
+					else
+						g.mana = g.maxMana+50;
+					g.playerMana.setText(g.player + "'s  Mana: " + g.mana);
+					g.infoPanel.updateUI();
+					g.items[selectedItem].setHas(false);
+					g.items[selectedItem].setPic("src//pics//empty mana potion.png");
+					items[selectedItem].setIcon(new ImageIcon(g.items[selectedItem].getPic()));
+					itemNames[selectedItem].setText("Empty");
+					itemPanels[selectedItem].updateUI();
+				}
+				break;
+			default:
+				boolean onwater = false;
+				if(g.selectedItem == 3){
+					for(int x = 0; x < g.feildObjects.size(); x++){
+						if(g.feildObjects.get(x).getName().equals("water")){
+							if(g.location.getX() < g.feildObjects.get(x).getX() + g.feildObjects.get(x).getWidth() && g.location.getX() + g.location.getWidth() > g.feildObjects.get(x).getX()
+							&& g.location.getY() < g.feildObjects.get(x).getY() + g.feildObjects.get(x).getHeight() && g.location.getY() + g.location.getHeight() > g.feildObjects.get(x).getY()){
+								onwater = true; 
+								break;
+							}	
+						}
+					}
+				}
+				if(onwater){
+					JOptionPane.showMessageDialog(null, "You are on water and cannot remove the shoes");
+					g.window.setVisible(true);
+					g.startTimers();
+					window.dispose();
+				}else{
+					g.selectedItem = selectedItem;
+					g.window.setVisible(true);
+					g.xlistener();
+					g.startTimers();
+					window.dispose();
+				}
+				break;
+		}
+	}else
+		JOptionPane.showMessageDialog(null, "You don't have this item!!");
+		
+	}
+	@Override
+	public void buttonB(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void buttonX(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void buttonY(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void dpad(int arg0, boolean arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void isConnected(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void leftShoulder(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void leftThumb(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void leftThumbDirection(double arg0) {
+		// TODO Auto-generated method stub
+		//System.out.println(arg0);
+		//USE THIS METHOD
+		//System.out.println("DIR"+arg0);
+		dir = arg0;
+		motion();
+		
+	}
+
+	@Override
+	public void leftThumbMagnitude(double arg0){
+	
+	
+	
+		// TODO Auto-generated method stub
+		//System.out.println("MAG" + arg0);
+		//USE TYHISMMETHOD AS WELL
+		//System.out.println("MAG"+arg0);
+		mag = arg0;
+	
+		
+		
+	}
+	@Override
+	public void leftTrigger(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightShoulder(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightThumb(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightThumbDirection(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightThumbMagnitude(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightTrigger(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void start(boolean arg0) {
+		if (arg0 == false){
+			System.out.println("2");
+			g.window.setVisible(true);
+			g.startTimers();
+			window.dispose();
+			g.xlistener();
+		}
+		
+		
+		
+	}
+	public void motion() {
+		//System.out.println("RUN");
+		//System.out.println(mag);
+		//30-150 Move Right
+		//300-60 Move Up
+		//120-250 Move Down
+		//210-330 Move Left
+		if (mag > 0.5){
+			//System.out.println("running!");
+			if (dir < 60 || dir > 300){
+				
+				
+			}else{
+				System.out.println("Move UP");
+				if(selectedItem > 4){
+					itemPanels[selectedItem].setBackground(null);
+					selectedItem-=5;
+					itemPanels[selectedItem].setBackground(Color.gray);
+					g.gamePanel.updateUI();
+				}
+
+			}	
+			
+			if (dir < 150 && dir > 30){
+				System.out.println("Move RIGHT");
+				if((selectedItem != 9 && selectedItem > 4) || selectedItem < 4){
+					itemPanels[selectedItem].setBackground(null);
+					selectedItem++;
+					itemPanels[selectedItem].setBackground(Color.gray);
+					g.gamePanel.updateUI();
+				}
+			
+			}
+			if (dir < 250 && dir > 120){
+				//System.out.println("Move DOWN");
+				if(selectedItem < 5){
+					itemPanels[selectedItem].setBackground(null);
+					selectedItem+=5;
+					itemPanels[selectedItem].setBackground(Color.gray);
+					g.gamePanel.updateUI();
+				}
+				
+				
+			}
+			if (dir < 330 && dir > 210){
+				//System.out.println("Move LEFT");
+				if((selectedItem != 0 && selectedItem < 5) ||  selectedItem > 5){
+					itemPanels[selectedItem].setBackground(null);
+					selectedItem--;
+					itemPanels[selectedItem].setBackground(Color.gray);
+					g.gamePanel.updateUI();
+				}
+			}	
+		}else{
+			
+		}
+	}	
 }

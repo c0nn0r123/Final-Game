@@ -13,7 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class Map implements WindowListener, KeyListener{
+import ch.aplu.xboxcontroller.XboxController;
+import ch.aplu.xboxcontroller.XboxControllerListener;
+
+public class Map implements WindowListener, KeyListener,XboxControllerListener{
 	JFrame window = new JFrame("Map of Erehwemos");
 	JPanel mainPanel = new JPanel();
 	JPanel[][] fragment = new JPanel[10][10];
@@ -26,6 +29,7 @@ public class Map implements WindowListener, KeyListener{
 	JPanel player = new JPanel();
 	boolean removed = false;
 	GUI g;
+	XboxController xc;
 	@SuppressWarnings("serial")
 	Timer time = new Timer(30, new AbstractAction(){
 		public void actionPerformed(ActionEvent arg0) {
@@ -44,7 +48,7 @@ public class Map implements WindowListener, KeyListener{
 			}
 		}
 	});
-	public Map(GUI g){
+	public Map(GUI g,XboxController xc){
 		this.g = g;
 		mainPanel.setLayout(null);
 		if(g.dungeon1 || g.dungeon2 || g.dungeon3 || g.dungeon4 || g.hiddendungeon){
@@ -206,6 +210,100 @@ public class Map implements WindowListener, KeyListener{
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void back(boolean arg0) {
+		// TODO Auto-generated method stub
+		g.window.setVisible(true);
+		g.startTimers();
+		window.dispose();
+		g.xlistener();
+		
+	}
+	@Override
+	public void buttonA(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void buttonB(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void buttonX(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void buttonY(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void dpad(int arg0, boolean arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void isConnected(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void leftShoulder(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void leftThumb(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void leftThumbDirection(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void leftThumbMagnitude(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void leftTrigger(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightShoulder(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightThumb(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightThumbDirection(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightThumbMagnitude(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void rightTrigger(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void start(boolean arg0) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -7,8 +7,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.*;
+
+import ch.aplu.xboxcontroller.XboxController;
+import ch.aplu.xboxcontroller.XboxControllerListener;
 //16 47 are dementions of the border
-public class GUI implements KeyListener {
+public class GUI implements KeyListener, XboxControllerListener {
 	String type = "hero";
 	boolean[] beatboss = {false, false, false};
 	boolean dungeon1 = false, dungeon2 = false, dungeon3 = false, dungeon4 = false, knock = false, hold = false, hiddendungeon = false,
@@ -56,12 +59,26 @@ public class GUI implements KeyListener {
 	boolean[][] hasbeendungeon2map= new boolean[5][5];
 	boolean[][] hasbeendungeon3map = new boolean[5][5];
 	boolean[][] hasbeendungeon4map = new boolean[5][5];
+	// xbox stuff
+	XboxController xc = new XboxController(1);
+	int numbero = 0;
+	double dir=0;
+	double mag = 0;
+	
 
 	@SuppressWarnings("unused")
 	public GUI(){	
+		xc.addXboxControllerListener(this);
 		for(int i = 0; i < 4; i++)
 			chestInfo[i] = new ArrayList<chest>();
 		openSave os = new openSave(this);
+		/*
+		 * 
+		 */
+		
+		/*
+		 * 
+		 */
 	}
 
 	public void attackLeft(){
@@ -304,7 +321,7 @@ public class GUI implements KeyListener {
 			case KeyEvent.VK_E:
 				stopTimers();
 				window.setVisible(false);
-				inventory i = new inventory(this);
+				inventory i = new inventory(this, xc);
 				break;
 			case KeyEvent.VK_P:
 				menu();
@@ -312,7 +329,7 @@ public class GUI implements KeyListener {
 			case KeyEvent.VK_M:
 				stopTimers();
 				window.setVisible(false);
-				Map m = new Map(this);
+				Map m = new Map(this, xc);
 				break;
 			case KeyEvent.VK_H:
 				stopTimers();
@@ -645,6 +662,9 @@ public class GUI implements KeyListener {
 	@SuppressWarnings("unused")
 	public void damage(String how){
 		int hurt = 0;
+		if (xc.isConnected()){
+			xc.vibrate(65535,65535,100);
+		}
 		if(selectedItem != 1 && !how.equals("arrow")){
 			if(player.contains("Legend "))
 				hurt += 4;
@@ -774,5 +794,282 @@ public class GUI implements KeyListener {
 		}
 		shots.clear();
 		shotObjects.clear();
+	}
+
+	@Override
+	public void back(boolean arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == false){
+			if (numbero == 1){
+				System.out.println("Map");
+				stopTimers();
+				window.setVisible(false);
+				Map m = new Map(this,xc);
+				numbero++;
+			}else{
+				numbero--;
+			}
+			
+			
+			
+			
+		}
+		
+	}
+
+	@Override
+	public void buttonA(boolean arg0) {
+		//System.out.println("A");
+		//xc.vibrate(65535,65535,500);
+		if (arg0 == true){
+			/*
+			 * Attack down
+			 */
+			System.out.println("DOWN");
+			//xc.vibrate(65535, 65535, 200);
+			attackDown();
+			
+		}
+		
+	}
+
+	@Override
+	public void buttonB(boolean arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == true){
+			/*
+			 * Attack right
+			 */
+			System.out.println("RIGHT");
+			attackRight();
+		}
+	}
+
+	@Override
+	public void buttonX(boolean arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == true){
+			/*
+			 * Attack left
+			 */
+			System.out.println("LEFT");
+			attackLeft();
+		}
+		
+	}
+
+	@Override
+	public void buttonY(boolean arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == true){
+			/*
+			 * Attack up
+			 */
+			System.out.println("UP");
+			attackUp();
+		}
+	}
+
+	@Override
+	public void dpad(int arg0, boolean arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void isConnected(boolean arg0) {
+		//System.out.println(arg0);
+		
+	}
+
+	@Override
+	public void leftShoulder(boolean arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == true){
+			System.out.println("save");
+		}
+		
+	}
+
+	@Override
+	public void leftThumb(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void leftThumbDirection(double arg0) {
+		// TODO Auto-generated method stub
+		//System.out.println(arg0);
+		//USE THIS METHOD
+		//System.out.println("DIR"+arg0);
+		dir = arg0;
+		motion();
+		
+	}
+
+	@Override
+	public void leftThumbMagnitude(double arg0) {
+		// TODO Auto-generated method stub
+		//System.out.println("MAG" + arg0);
+		//USE TYHISMMETHOD AS WELL
+		//System.out.println("MAG"+arg0);
+		mag = arg0;
+	
+		
+		
+	}
+
+	@Override
+	public void leftTrigger(double arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == 1.0){
+			System.out.println("save & quit");
+		}
+		
+	}
+
+	@Override
+	public void rightShoulder(boolean arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == true){
+			System.out.println("save");
+		}
+		
+	}
+
+	@Override
+	public void rightThumb(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void rightThumbDirection(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void rightThumbMagnitude(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void rightTrigger(double arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == 1.0){
+			System.out.println("save & quit");
+		}
+		
+	}
+
+	@Override
+	public void start(boolean arg0) {
+		// TODO Auto-generated method stub
+		if (arg0 == false){
+			//System.out.println("StartBtn");
+			stopTimers();
+			window.setVisible(false);
+			inventory i = new inventory(this,xc);
+		}
+		//System.out.println(arg0);
+		
+	}
+	public void motion() {
+		//System.out.println("RUN");
+		//System.out.println(mag);
+		//30-150 Move Right
+		//300-60 Move Up
+		//120-250 Move Down
+		//210-330 Move Left
+		if (mag > 0.5){
+			//System.out.println("running!");
+			if (dir < 60 || dir > 300){
+				
+				moveUp = true;
+			}else{
+				System.out.println("Move UP");
+				moveUp = false;
+				if(heroMove.equals("up")){
+					heroMove = "";
+					heroPic = new ImageIcon("src//pics//" + type + " up still.png");
+					hero.setIcon(heroPic);
+					gamePanel.updateUI();
+				}	
+			}
+			if (dir < 150 && dir > 30){
+				System.out.println("Move RIGHT");
+				moveRight = true;
+			}else{
+				moveRight = false;
+				if(heroMove.equals("right")){
+					heroMove = "";
+					heroPic = new ImageIcon("src//pics//" + type + " right still.png");
+					hero.setIcon(heroPic);
+					gamePanel.updateUI();
+				}
+			}
+			if (dir < 250 && dir > 120){
+				System.out.println("Move DOWN");
+				moveDown = true;
+			}else{
+				moveDown = false;
+				if(heroMove.equals("down")){
+					heroMove = "";
+					heroPic = new ImageIcon("src//pics//" + type + " down still.png");
+					hero.setIcon(heroPic);
+					gamePanel.updateUI();
+				}
+			}
+			if (dir < 330 && dir > 210){
+				System.out.println("Move LEFT");
+				moveLeft = true;
+			}else{
+				moveLeft = false;
+				if(heroMove.equals("left")){
+					heroMove = "";
+					heroPic = new ImageIcon("src//pics//" + type + " left still.png");
+					hero.setIcon(heroPic);
+					gamePanel.updateUI();
+				}
+			}
+		}else{
+			moveUp = false;
+			moveDown = false;
+			moveLeft = false;
+			moveRight = false;
+			if(heroMove.equals("up")){
+				heroMove = "";
+				heroPic = new ImageIcon("src//pics//" + type + " up still.png");
+				hero.setIcon(heroPic);
+				gamePanel.updateUI();
+			}	
+			if(heroMove.equals("right")){
+				heroMove = "";
+				heroPic = new ImageIcon("src//pics//" + type + " right still.png");
+				hero.setIcon(heroPic);
+				gamePanel.updateUI();
+			}
+			if(heroMove.equals("down")){
+				heroMove = "";
+				heroPic = new ImageIcon("src//pics//" + type + " down still.png");
+				hero.setIcon(heroPic);
+				gamePanel.updateUI();
+			}
+			if(heroMove.equals("left")){
+				heroMove = "";
+				heroPic = new ImageIcon("src//pics//" + type + " left still.png");
+				hero.setIcon(heroPic);
+				gamePanel.updateUI();
+			}
+		}
+
+	}
+
+	public void xlistener() {
+		// TODO Auto-generated method stub
+		xc.addXboxControllerListener(this);
 	}
 }

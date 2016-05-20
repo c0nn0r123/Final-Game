@@ -1,27 +1,27 @@
-empty
-0
-0
-70
-70
-12
-12
+Lunk
+4
+2
+360
+575
+24
+24
 False
-100
+41
 100
 False
-0
+164
 TrueLv.1pics/sword lv.1.png
 TrueLv.1pics/shield lv.1.png
-FalseLv.1pics/no.png
+TrueLv.1pics/Bow & Arrow lv.1.png
 FalseLv.1pics/no.png
 FalseLv.1pics/no.png
 FalseLv.1pics/no.png
 TrueLv.1pics/health potion.png
 TrueLv.1pics/health potion.png
 TrueLv.1pics/mana potion.png
-TrueLv.1pics/mana potion.png
-0
-f
-f
+FalseLv.1src//pics//empty mana potion.png
+2
+d1
+t
 f
 f
